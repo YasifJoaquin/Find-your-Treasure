@@ -33,7 +33,6 @@
             <th> {{ $datosu->objeto }} </th>
             <td> {{ $datosu->marca }} </td>
             <td> {{ $datosu->color }} </td>
-            <td> {{ $datosu->color }} </td>
             <td> {{ $datosu->ubicacion }} </td>
             <td> {{ $datosu->valor_sentimental }} </td>
             <td>
@@ -65,11 +64,14 @@
     <table>
         <tr>
             <th scope="row">Nombre usuario</th>
+            <th>user id</th>
             <th>Objeto</th>
+            <th>Marca</th>
         </tr>
         @foreach ($usu as $datosu)
         <tr>
             <th> {{ $datosu->name }} </th>
+            <th> {{ $datosu->id }} </th>
             @foreach ($datosu->objetos as $item)
             <td> {{ $item->objeto }} </td>
             <td> {{ $item->marca }} </td>

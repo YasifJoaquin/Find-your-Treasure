@@ -16,7 +16,7 @@ use App\Http\Livewire\Pruebas;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::middleware([

@@ -21,7 +21,7 @@ class Pruebas extends Component
         $this->objetos = Objeto::all();
         $this->clasificacion = Clasificacion::all();
         $this->objetos_clasificacion = ClasificacionObjeto::all();
-        //dd($this->objetos);
+        //dd($this->usu);
     }
 
     public function render()
