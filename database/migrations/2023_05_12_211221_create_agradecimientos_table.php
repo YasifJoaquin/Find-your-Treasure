@@ -11,20 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('objetos', function (Blueprint $table) {
+        Schema::create('agradecimientos', function (Blueprint $table) {
             $table->id();
-            $table->string('objeto');
-            $table->string('marca')->nullable();
-            $table->string('color');
-            $table->string('ubicacion');
-            $table->longText('descripcion')->nullable(); //la descripcion seria el estado del objeto(que estan el figma)
-            $table->unsignedBigInteger('valor_sentimental')->nullable();
-            $table->unsignedBigInteger('estado');
-            $table->string('imagen', 2048)->nullable();
+            $table->longText('texto');
+
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('objeto_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('objetos');
+        Schema::dropIfExists('agradecimientos');
     }
 };

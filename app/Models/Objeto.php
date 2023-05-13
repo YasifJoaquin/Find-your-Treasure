@@ -21,4 +21,9 @@ class Objeto extends Model
     {
         return $this->belongsToMany(Clasificacion::class, 'clasificacion_objetos');
     }
+
+    public function agradecimiento(): HasMany
+    {
+        return $this->hasMany(Agradecimiento::class);
+    }
 }
