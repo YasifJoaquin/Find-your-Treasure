@@ -42,6 +42,10 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -49,6 +53,15 @@
         @livewireStyles
     </head>
     <body class="inset-0 bg-no-repeat bg-center bg-cover" style="background-image: url({{ asset('src/gradient.png') }}) ;">
+
+        <!-- Segundo fondo -->
+        <div class="absolute inset-0">
+            <img src="{{ asset('src/barco.png')}}" alt="Barco" class="w-full h-full object-cover" alt="">
+        </div>
+
+        <div>
+            @yield('Contenido')
+        </div>
 
         @stack('modals')
 

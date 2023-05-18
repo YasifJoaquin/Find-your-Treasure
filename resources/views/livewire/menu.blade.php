@@ -1,47 +1,48 @@
 <div>
     <!-- Menu -->
-    <div class="grid grid-cols-3 text-base lg:text-lg sm:grid-cols-4 lg:grid-cols-6 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
-        <a href="{{ url('/') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarMapita" wire:mouseout="OcultarMapita">
-                Inicio
-            </div>
-        </a>
+<div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-4 lg:grid-cols-6 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
+    <a href="{{ url('/') }}">
+        <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarMapita" wire:mouseout="OcultarMapita">
+            Inicio
+        </div>
+    </a>
 
-        @if(auth()->check())
-        <a href="{{ url('/') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
-                {{ Auth::user()->name }}
-            </div>
-        </a>
-        @else
-        <a href="{{ route('login') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
-                Perfil
-            </div>
-        </a>
-        @endif
-        
-        <a href="#">
-            <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarCartel" wire:mouseout="OcultarCartel">
-                Crear Cartel
-            </div>
-        </a>
-        <a href="#">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarTesoro" wire:mouseout="OcultarTesoro">
-                Objetos Per...
-            </div>
-        </a>
-        <a href="#">
-            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarBotin" wire:mouseout="OcultarBotin">
-                Botin
-            </div>
-        </a>
-        <a href="#">
-            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2 font-semibold" id="hijo" wire:mouseover="MostrarNosotros" wire:mouseout="OcultarNosotros">
-                About US
-            </div>
-        </a>
-    </div>
+    @if(auth()->check())
+    <a href="{{ url('/') }}">
+        <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
+            {{ Auth::user()->name }}
+        </div>
+    </a>
+    @else
+    <a href="{{ route('login') }}">
+        <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
+            Perfil
+        </div>
+    </a>
+    @endif
+    
+    <a href="#">
+        <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarCartel" wire:mouseout="OcultarCartel">
+            Crear Cartel
+        </div>
+    </a>
+    <a href="#">
+        <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarTesoro" wire:mouseout="OcultarTesoro">
+            Objetos Per...
+        </div>
+    </a>
+    <a href="#">
+        <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarBotin" wire:mouseout="OcultarBotin">
+            Botin
+        </div>
+    </a>
+    <a href="#">
+        <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarNosotros" wire:mouseout="OcultarNosotros">
+            About US
+        </div>
+    </a>
+</div>
+    
 
     <!-- Iconos del hover -->
     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 h-auto w-10/12 mx-auto">

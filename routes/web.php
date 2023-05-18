@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Pruebas;
+use App\Http\Livewire\Registro;
+use App\Http\Livewire\IniciarSesion;
 
 /*
 |--------------------------------------------------------------------------
