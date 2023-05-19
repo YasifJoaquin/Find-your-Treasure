@@ -8,7 +8,7 @@
         </tr>
         @foreach ($usu as $datosu)
         <tr>
-            <th> {{ $datosu->name }} </th>
+            <th> {{ $datosu->nombres }} </th>
             <td> {{ $datosu->email }} </td>
             <td> {{ $datosu->password }} </td>
         </tr>

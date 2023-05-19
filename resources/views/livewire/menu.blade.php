@@ -8,9 +8,9 @@
     </a>
 
     @if(auth()->check())
-    <a href="{{ url('/') }}">
+    <a href="{{ url('user/profile') }}">
         <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->nombres }}
         </div>
     </a>
     @else

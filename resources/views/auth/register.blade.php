@@ -11,27 +11,27 @@
 
             <div>
                 <x-label for="nombres" value="{{ __('Nombres') }}" />
-                <x-input id="nombres" class="block w-full" type="text" name="nombres" :value="old('nombres')" required autofocus autocomplete="name" />
+                <x-input id="nombres" class="block w-full text-lg" type="text" name="nombres" :value="old('nombres')" required autofocus autocomplete="name" />
             </div>
             
             <div class="mt-2">
                 <x-label for="apellidos" value="{{ __('Apellidos') }}" />
-                <x-input id="apellidos" class="block w-full" type="text" name="apellidos" :value="old('apellidos')" required autocomplete="name" />
+                <x-input id="apellidos" class="block w-full text-lg" type="text" name="apellidos" :value="old('apellidos')" required autocomplete="name" />
             </div>
             
             <div class="mt-2">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block w-full text-lg" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
             
             <div class="mt-2">
                 <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-input id="password" class="block w-full text-xl tracking-widest" type="password" name="password" required autocomplete="new-password" />
             </div>
             
             <div class="mt-2">
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-input id="password_confirmation" class="block w-full text-xl tracking-widest" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             
 
