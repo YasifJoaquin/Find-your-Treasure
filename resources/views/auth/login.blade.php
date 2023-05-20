@@ -17,12 +17,12 @@
 
             <div>
                 <x-label for="email" value="{{ __('Correo Electronico') }}" />
-                <x-input id="email" class="block mt-1 text-xl " type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-input id="email" class="rounded-full border-2 border-red-600 block mt-1 text-xl text-center" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Palabra secreta que abrirá el cofre del tesoro') }}" />
-                <x-input id="password" class="block mt-1 text-xl " type="password" name="password" required autocomplete="current-password" />
+                <x-input id="password" class="rounded-full border-2 border-red-600 block mt-1 text-xl text-center" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
