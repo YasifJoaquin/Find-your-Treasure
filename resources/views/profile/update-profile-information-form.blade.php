@@ -57,7 +57,7 @@
             <div class="inline-flex">
                 <x-label for="nombres" value="{{ __('Nombres') }}" />
                 <x-input id="nombres" type="text" class="border-b-indigo-700 ml-5 block w-full" wire:model.defer="state.nombres" autocomplete="nombres" />
-                <x-input-error for="nombres" class="mt-2" />
+                <x-input-error for="nombres" />
             </div>
         </div>
 
@@ -65,7 +65,7 @@
             <div class="inline-flex">
                 <x-label for="apellidos" value="{{ __('Apellidos') }}" />
                 <x-input id="apellidos" type="text" class="border-b-indigo-700 ml-5 block w-full" wire:model.defer="state.apellidos" autocomplete="apellidos" />
-                <x-input-error for="apellidos" class="mt-2" />
+                <x-input-error for="apellidos" />
             </div>
         </div>
 
@@ -74,7 +74,7 @@
             <div class="inline-flex">
                 <x-label for="email" value="{{ __('Correo') }}" />
                 <x-input id="email" type="email" class="border-b-indigo-700 ml-9 block w-full" wire:model.defer="state.email" autocomplete="username" />
-                <x-input-error for="email" class="mt-2" />
+                <x-input-error for="email" />
             </div>
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
