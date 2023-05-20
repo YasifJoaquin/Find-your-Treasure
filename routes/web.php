@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pruebas;
 use App\Http\Livewire\Registro;
 use App\Http\Livewire\IniciarSesion;
+use App\Http\Livewire\CartelEncontrado;
+use App\Http\Livewire\CartelPerdido;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,12 @@ Route::middleware([
 
     Route::get('/pruebas', Pruebas::class)->name('pruebas');
 });
+
+// Ruta a la pregunta para crear un cartel de objeto perdido/encontrado
+Route::get('/pregunta', function () {
+    return view('pregunta');
+})->name('pregunta');
+
+Route::get('/crear-cartel-perdido', CartelPerdido::class)->name('cperdido');
+
+Route::get('/crear-cartel-encontrado', CartelEncontrado::class)->name('cencontrado');

@@ -5,8 +5,8 @@
         </a>
     </div>
     
-    <div class="w-full sm:max-w-md mt-1 bg-red-200 px-6 py-4 z-50 bg-center" style="background-image: url({{ asset('src/cartel-index.png') }});">
-    <div class="pb-2">
+    <div class="w-full sm:max-w-md mt-1 bg-red-200 px-6 z-50 bg-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
+    <div class="">
         {{ $logo }}
     </div>
 

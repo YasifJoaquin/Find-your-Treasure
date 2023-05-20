@@ -5,7 +5,7 @@
     </div>
 
     <div>
-        <div class="mt-10 flex justify-center text-center relative">
+        <div class="mt-6 flex justify-center text-center relative">
             {{-- Fondo carte --}}
             <div class="absolute inset-0 z-0">
                 <img src="{{ asset('src/cartel-index.png')}}" alt="Barco" class="w-11/12 h-full object-cover mx-auto" alt=" fondo perfil">
@@ -22,6 +22,7 @@
                         <img src="{{ asset('src/clavo.png')}}" class="w-16 h-full object-cover mx-auto" alt="Clavo">
                     </div>
                 </div>
+                
                 {{-- Div de los datos del usuario --}}
                 <div class="col-span-2 row-span-6 bg-red-600 rounded-2xl border-2 border-black">
                     <p class="text-xl text-white tracking-widest">
@@ -34,7 +35,7 @@
                     
                 </div>
                 {{-- Div de los Objetos Perdidos --}}
-                <div class="col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-800">
+                <div class="col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-700">
                     <a href="#perdidos" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
                         <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-5">
                         <div class="absolute z-10 mt-28">
@@ -44,9 +45,21 @@
                 </div>
                 
                 
-                <div class="border row-span-2 invisible"></div>
+                {{-- <div class="border row-span-2 invisible"></div> --}}
+                {{-- Boton de deslogueo 2 --}}
+                <div class="row-span-2 flex items-center justify-center">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                {{ __('Abandonar la Cubierta') }}
+                        </x-dropdown-link>
+                    </form>
+                </div>
+
                 {{-- Div de los Objetos Encontrados --}}
-                <div class="row-span-2 bg-red-600 rounded-2xl hover:bg-red-800">
+                <div class="row-span-2 bg-red-600 rounded-2xl hover:bg-red-700">
                     <a href="#agradecimientos" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
                         <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-5">
                         <div class="absolute z-10 mt-28">
@@ -55,15 +68,28 @@
                     </a>
                 </div>
                 {{-- Div de mis agradecimientos --}}
-                <div class="border col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-800">
+                <div class="border col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-700">
                     <a href="#encontrados" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
                         <img src="{{ asset('src/pala.png')}}" alt="Icono" class="w-20 h-20 mt-5">
                         <div class="absolute z-10 mt-28">
-                            <span class="text-white text-2xl tracking-wider"> Mis Objetos Encontrados </span>
+                            <span class="text-white text-2xl tracking-wider"> Mis Agradecimientos </span>
                         </div>
                     </a>
                 </div>
-                <div class="border row-span-2 invisible"></div>
+
+                {{-- <div class="border row-span-2 invisible"></div> --}}
+                {{-- Boton de deslogueo 2 --}}
+                <div class="row-span-2 flex items-center justify-center">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                {{ __('Abandonar la Cubierta') }}
+                        </x-dropdown-link>
+                    </form>
+                </div>
+
                 <div class="border col-span-5 invisible"></div>
             </div>
         </div>

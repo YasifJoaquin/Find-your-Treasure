@@ -10,7 +10,7 @@
     </a>
 
     @if(auth()->check())
-    <a href="{{ url('user/profile') }}">
+    <a href="{{ route('profile.show') }}">
         <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
             <p class="tracking-widest">
                 {{ Auth::user()->nombres }}
@@ -27,7 +27,7 @@
     </a>
     @endif
     
-    <a href="#">
+    <a href="{{ route('pregunta') }}">
         <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarCartel" wire:mouseout="OcultarCartel">
             <p class="tracking-widest">
                 Crear Cartel
@@ -37,14 +37,14 @@
     <a href="#">
         <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarTesoro" wire:mouseout="OcultarTesoro">
             <p class="tracking-widest">
-                Objetos Per...
+                Objetos Perdidos
             </p>
         </div>
     </a>
     <a href="#">
         <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarBotin" wire:mouseout="OcultarBotin">
             <p class="tracking-widest">
-                Botin
+                Agradecimientos
             </p>
         </div>
     </a>

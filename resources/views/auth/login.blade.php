@@ -21,7 +21,7 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Palabra secreta que abrirá el cofre del tesoro') }}" />
+                <x-label for="password" value="{{ __('Palabra secreta para abrir el cofre del tesoro') }}" />
                 <x-input id="password" class="rounded-full border-2 border-red-600 block mt-1 text-xl text-center" type="password" name="password" required autocomplete="current-password" />
             </div>
 

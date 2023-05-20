@@ -20,17 +20,17 @@
             </div>
             
             <div class="mt-2">
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" value="{{ __('Botella de Mensajes (Correo)') }}" />
                 <x-input id="email" class="rounded-full border-2 border-red-600 text-center block w-full text-lg" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
             
             <div class="mt-2">
-                <x-label for="password" value="{{ __('Password') }}" />
+                <x-label for="password" value="{{ __('Palabra secreta que abrirá el cofre del tesoro') }}" />
                 <x-input id="password" class="rounded-full border-2 border-red-600 text-center block w-full text-xl tracking-widest" type="password" name="password" required autocomplete="new-password" />
             </div>
             
             <div class="mt-2">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-label for="password_confirmation" value="{{ __('Repetir palabra secreta') }}" />
                 <x-input id="password_confirmation" class="rounded-full border-2 border-red-600 text-center block w-full text-xl tracking-widest" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             
