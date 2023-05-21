@@ -15,11 +15,11 @@
                 {{-- Div principal, titulo --}}
                 <div class="col-span-5 rounded-xl w-6/12 h-14 mx-auto bg-red-600 flex justify-center items-center mt-3 border-2 border-black">
                     <div class="w-3/12"> 
-                        <img src="{{ asset('src/clavo.png')}}" class="w-16 h-full object-cover mx-auto" alt="Clavo">
+                        <img src="{{ asset('src/clavo.png')}}" class="w-16 h-16 object-cover mx-auto" alt="Clavo">
                     </div>
                     <div class="w-6/12"> <p class="text-3xl text-gray-100 tracking-widest"> Mi perfil </p> </div>
                     <div class="w-3/12">
-                        <img src="{{ asset('src/clavo.png')}}" class="w-16 h-full object-cover mx-auto" alt="Clavo">
+                        <img src="{{ asset('src/clavo.png')}}" class="w-16 h-16 object-cover mx-auto" alt="Clavo">
                     </div>
                 </div>
                 

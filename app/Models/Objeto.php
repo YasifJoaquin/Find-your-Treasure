@@ -12,6 +12,18 @@ class Objeto extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'objeto',
+        'marca',
+        'color',
+        'ubicacion',
+        'descripcion',
+        'valor_sentimental',
+        'estado',
+        'imagen',
+        'user_id',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

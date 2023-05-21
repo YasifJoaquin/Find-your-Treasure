@@ -21,7 +21,7 @@ use App\Http\Livewire\CartelPerdido;
 
 Route::get('/', function () {
     return view('inicio');
-});
+})->name('indecs');
 
 Route::middleware([
     'auth:sanctum',
