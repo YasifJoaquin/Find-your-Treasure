@@ -12,7 +12,7 @@ class ObjetoDetalle extends Component
     public function mount($id)
     {
         $this->detalles = Objeto::find($id);
-        dd($this->detalles);
+        //dd($this->detalles);
     }
 
     public function render()

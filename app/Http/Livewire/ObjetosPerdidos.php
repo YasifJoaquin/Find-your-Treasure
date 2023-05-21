@@ -12,7 +12,7 @@ class ObjetosPerdidos extends Component
 
     public function render()
     {
-        $objetos = Objeto::paginate(3);
+        $objetos = Objeto::where('estado', '!=', 4)->paginate(3);
 
         return view('livewire.objetos-perdidos', [
             'objetos' => $objetos
