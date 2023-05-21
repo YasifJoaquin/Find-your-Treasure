@@ -55,7 +55,7 @@
     <body class="inset-0 bg-no-repeat bg-center bg-cover" style="background-image: url({{ asset('src/gradient.png') }}) ;">
 
         <!-- Segundo fondo -->
-        <div class="absolute inset-0">
+        <div class="absolute inset-0 h-auto">
             <img src="{{ asset('src/barco.png')}}" alt="Barco" class="w-full h-full object-cover" alt="">
         </div>
 

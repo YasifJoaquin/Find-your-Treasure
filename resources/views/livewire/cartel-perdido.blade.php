@@ -35,7 +35,7 @@
                     <div class=" invisible"></div>
                 
                     <div class="col-span-4">
-                        <label for="pregunta1" class="block text-lg text-gray-700 mb-2 tracking-wider">¿Qué tesoro has encontrado, camarada?</label>
+                        <label for="pregunta1" class="block text-lg text-gray-700 mb-2 tracking-wider">¿Qué tesoro has perdido, camarada?</label>
                         <input type="text" id="pregunta1" name="objeto" wire:model="objeto" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
                     </div>
                     <div class="col-span-4">
@@ -44,7 +44,7 @@
                     </div>
                 
                     <div class="col-span-4">
-                        <label for="pregunta3" class="block text-lg text-gray-700 mb-2 tracking-wider">¿De que color es el color del tesoro?</label>
+                        <label for="pregunta3" class="block text-lg text-gray-700 mb-2 tracking-wider">¿De que color es el cofre del tesoro?</label>
                         <input type="text" id="pregunta3" name="color" wire:model="color" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
                     </div>
                     <div class="col-span-4">
@@ -53,7 +53,7 @@
                     </div>
                 
                     <div class="col-span-4">
-                        <label for="pregunta5" class="block text-lg text-gray-700 mb-2 tracking-wider">¿Donde has encontrado ese botín, camarada?</label>
+                        <label for="pregunta5" class="block text-lg text-gray-700 mb-2 tracking-wider">¿Donde has perdido ese botín, camarada?</label>
                         <input type="text" id="pregunta5" name="ubicacion" wire:model="ubicacion" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
                     </div>
                     <div class="col-span-4">

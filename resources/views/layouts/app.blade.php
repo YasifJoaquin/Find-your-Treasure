@@ -27,7 +27,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 z-0 h-auto">
                     <img src="{{ asset('src/fondo.png')}}" alt="Barco" class="w-full h-full object-cover" alt="">
                 </div>
 

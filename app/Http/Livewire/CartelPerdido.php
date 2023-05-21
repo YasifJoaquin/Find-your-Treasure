@@ -49,7 +49,7 @@ class CartelPerdido extends Component
                 'estado' => 1,
                 'user_id' => auth()->user()->id,
             ]);
-            return redirect()->route('indecs');
+            return redirect()->route('operdidos');
         }
 
         // El usuario no está autenticado, redirigir a la página de login o mostrar un mensaje de error
