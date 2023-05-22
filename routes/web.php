@@ -9,6 +9,9 @@ use App\Http\Livewire\CartelEncontrado;
 use App\Http\Livewire\CartelPerdido;
 use App\Http\Livewire\ObjetosPerdidos;
 use App\Http\Livewire\ObjetoDetalle;
+use App\Http\Livewire\MisObjetosPerdidos;
+use App\Http\Livewire\MisObjetosEncontrados;
+use App\Http\Livewire\MisAgradecimientos;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +40,12 @@ Route::middleware([
     Route::get('/pruebas', Pruebas::class)->name('pruebas');
     // Ruta para ver los detalles de un objeto perdido
     Route::get('/objeto/{id}', ObjetoDetalle::class)->name('objeto.show');
+    // Ruta para ver los detalles de mis objetos perdidos
+    Route::get('/mis-objetos-perdidos', MisObjetosPerdidos::class)->name('mobjetosp');
+    // Ruta para ver los detalles de mis objetos encontrados
+    Route::get('/mis-objetos-encontrados', MisObjetosEncontrados::class)->name('mobjetose');
+    // Ruta para ver los detalles de mis agradecimientos
+    Route::get('/mis-agradecimientos', MisAgradecimientos::class)->name('magradecimientos');
 });
 
 // Ruta a la pregunta para crear un cartel de objeto perdido/encontrado

@@ -53,7 +53,7 @@
         @endif
 
         <!-- Name -->
-        <div class="mb-5">
+        <div class="mb-3">
             <div class="inline-flex">
                 <x-label for="nombres" class="text-gray-200" value="{{ __('Nombres') }}" />
                 <x-input id="nombres" type="text" class="border-b-indigo-700 ml-5 block w-full" wire:model.defer="state.nombres" autocomplete="nombres" />
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <div class="mb-5">
+        <div class="mb-3    ">
             <div class="inline-flex">
                 <x-label for="apellidos" value="{{ __('Apellidos') }}" />
                 <x-input id="apellidos" type="text" class="border-b-indigo-700 ml-5 block w-full" wire:model.defer="state.apellidos" autocomplete="apellidos" />

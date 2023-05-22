@@ -28,7 +28,7 @@
                     <p class="text-xl text-white tracking-widest">
                         - Se busca -
                     </p> <br>
-                    <div class="border w-40 h-32 mx-auto"></div>
+                    <div class="border w-48 h-40 mx-auto"></div>
                     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                         @livewire('profile.update-profile-information-form')
                     @endif
@@ -36,9 +36,9 @@
                 </div>
                 {{-- Div de los Objetos Perdidos --}}
                 <div class="col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-700">
-                    <a href="#perdidos" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
-                        <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-5">
-                        <div class="absolute z-10 mt-28">
+                    <a href="{{ route('mobjetosp') }}" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
+                        <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-10">
+                        <div class="absolute z-10 mt-32">
                             <span class="text-white text-2xl tracking-wider"> Mis Objetos Perdidos </span>
                         </div>
                     </a>
@@ -58,21 +58,21 @@
                     </form>
                 </div>
 
-                {{-- Div de los Objetos Encontrados --}}
+                {{-- Div de mis Agradecimientos --}}
                 <div class="row-span-2 bg-red-600 rounded-2xl hover:bg-red-700">
-                    <a href="#agradecimientos" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
-                        <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-5">
-                        <div class="absolute z-10 mt-28">
-                            <span class="text-white text-2xl tracking-wider"> Mis Objetos Perdidos </span>
+                    <a href="{{ route('magradecimientos') }}" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
+                        <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-10">
+                        <div class="absolute z-10 mt-32">
+                            <span class="text-white text-2xl tracking-wider"> Mis Agradecimientos </span>
                         </div>
                     </a>
                 </div>
-                {{-- Div de mis agradecimientos --}}
+                {{-- Div de mis Objetos Encontrados --}}
                 <div class="border col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-700">
-                    <a href="#encontrados" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
-                        <img src="{{ asset('src/pala.png')}}" alt="Icono" class="w-20 h-20 mt-5">
-                        <div class="absolute z-10 mt-28">
-                            <span class="text-white text-2xl tracking-wider"> Mis Agradecimientos </span>
+                    <a href="{{ route('mobjetose') }}" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
+                        <img src="{{ asset('src/pala.png')}}" alt="Icono" class="w-20 h-20 mt-10">
+                        <div class="absolute z-10 mt-32">
+                            <span class="text-white text-2xl tracking-wider"> Mis Objetos Encontrados </span>
                         </div>
                     </a>
                 </div>

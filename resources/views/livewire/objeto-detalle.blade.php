@@ -34,7 +34,19 @@
                         </div>
 
                         @if ($detalles->estado == 2)
-                            <h1 class="text-gray-600 tracking-wider text-xl"> Encontrado por: <span class="text-black tracking-wide text-lg"> {{ $detalles->user->nombres }} </span> </h1>
+                            <h1 class="text-gray-600 tracking-wider text-xl mt-5"> Encontrado por: <span class="text-black tracking-wide text-lg"> {{ $detalles->user->nombres }} </span> </h1>
+                        @elseif ($detalles->user_id == Auth::user()->id)
+                        {{-- <a href="{{ route('objeto.edit', ['id' => $objeto->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black"> --}}
+                        <a href="#edit" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black">
+                            Editar
+                        </a>
+                        @endif
+
+                        @if ($detalles->estado == 2 && $detalles->user_id == Auth::user()->id)
+                            {{-- <a href="{{ route('objeto.edit', ['id' => $objeto->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black"> --}}
+                            <a href="#edit" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black">
+                                Editar
+                            </a>
                         @endif
 
                     </div>

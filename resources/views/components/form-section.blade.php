@@ -6,7 +6,7 @@
         <x-slot name="description">{{ $description }}</x-slot>
     </x-section-title>
 
-    <div class="mt-5">
+    <div class="">
         <form wire:submit.prevent="{{ $submit }}">
             <div class="px-2 py-3 sm:p-6 {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
                 <div class="flex-col">

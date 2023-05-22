@@ -12,7 +12,7 @@
                 <div class="col-span-3">
                     <div class="border-2 border-black flex justify-between mt-3 items-center bg-red-600 rounded-xl">
                         <img src="{{ asset('src/clavo.png') }}" class="ml-2 w-10 h-10">
-                        <h1 class="text-gray-200 text-2xl tracking-widest"> Objetos Perdidos </h1>
+                        <h1 class="text-gray-200 text-2xl tracking-widest"> Mis Objetos Enconrtados </h1>
                         <img src="{{ asset('src/clavo.png') }}" class="mr-2 w-10 h-10">
                     </div>
                 </div>
@@ -20,15 +20,12 @@
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
 
-                @foreach ($objetos as $objeto)
+                @foreach ($misobjetos as $objeto)
                     <div class="col-span-3 row-span-6">
                         <div class="w-4/6 h-5/6 mx-auto bg-center bg-cover" style="background-image: url({{ asset('src/cartel-index.png') }});">
                             <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
-                                <div class="h-full pb-20">
-                                    <h1 class="tracking-widest text-3xl font-bold w-full pt-2">
-                                        - {{ $objeto->estado }} -
-                                    </h1>
-                                    <div class="border-2 border-black w-3/5 h-3/6 mx-auto mt-3 bg-gray-300"></div>
+                                <div class="h-full py-8">
+                                    <div class="border-2 border-black w-3/5 h-4/6 mx-auto mt-3 bg-gray-300"></div>
     
                                     <h2 class="text-2xl tracking-wider font-semibold px-4">
                                         {{ $objeto->objeto }}
@@ -43,7 +40,7 @@
                 @endforeach
 
                 <div class="col-span-9 mx-auto">
-                    {{ $objetos->links() }}
+                    {{ $misobjetos->links() }}
                 </div>
             </div>
         </div>
