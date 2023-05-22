@@ -41,7 +41,7 @@
             </p>
         </div>
     </a>
-    <a href="#">
+    <a href="{{ route('magradecimientos') }}">
         <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarBotin" wire:mouseout="OcultarBotin">
             <p class="tracking-widest">
                 Agradecimientos

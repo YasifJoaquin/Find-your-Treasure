@@ -12,6 +12,7 @@ use App\Http\Livewire\ObjetoDetalle;
 use App\Http\Livewire\MisObjetosPerdidos;
 use App\Http\Livewire\MisObjetosEncontrados;
 use App\Http\Livewire\MisAgradecimientos;
+use App\Http\Livewire\AgradecimientoDetalles;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::middleware([
     Route::get('/mis-objetos-encontrados', MisObjetosEncontrados::class)->name('mobjetose');
     // Ruta para ver los detalles de mis agradecimientos
     Route::get('/mis-agradecimientos', MisAgradecimientos::class)->name('magradecimientos');
+    // Ruta para ver los detalles de mis Agradecimientos
+    Route::get('/agradecimiento/{id}', AgradecimientoDetalles::class)->name('agradecimiento.show');
 });
 
 // Ruta a la pregunta para crear un cartel de objeto perdido/encontrado
