@@ -47,15 +47,15 @@
                 
                 {{-- <div class="border row-span-2 invisible"></div> --}}
                 {{-- Boton de deslogueo 2 --}}
-                <div class="row-span-2 flex items-center justify-center">
-                    <form method="POST" action="{{ route('logout') }}">
+                <div class="row-span-2 flex items-center justify-center invisible">
+                    {{-- <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-dropdown-link :href="route('logout')"
                             onclick="event.preventDefault();
                             this.closest('form').submit();">
                                 {{ __('Abandonar la Cubierta') }}
                         </x-dropdown-link>
-                    </form>
+                    </form> --}}
                 </div>
 
                 {{-- Div de mis Agradecimientos --}}

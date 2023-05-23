@@ -12,7 +12,7 @@ class AgradecimientoDetalles extends Component
     public function mount($id)
     {
         $this->agradecimientos = Agradecimiento::find($id);
-        //dd($this->detalles);
+        //dd($this->agradecimientos);
     }
 
     public function render()

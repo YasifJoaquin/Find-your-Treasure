@@ -56,6 +56,10 @@ Route::get('/pregunta', function () {
     return view('pregunta');
 })->name('pregunta');
 
+Route::get('/sobre-nosotros', function () {
+    return view('nosotros');
+})->name('nosotros');
+
 // Ruta para crear cartel de objeto perdido :'v
 Route::get('/crear-cartel-perdido', CartelPerdido::class)->name('cperdido');
 // Ruta para crear cartel de objeto encontrado :D
