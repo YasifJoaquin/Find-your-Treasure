@@ -25,7 +25,7 @@
                         <div class="w-4/6 h-5/6 mx-auto bg-center bg-cover" style="background-image: url({{ asset('src/cartel-index.png') }});">
                             <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
                                 <div class="h-full pb-20">
-                                    <h1 class="tracking-widest text-3xl font-bold w-full pt-2">
+                                    <h1 class="tracking-widest text-3xl font-bold w-full pt-5">
                                         - {{ $objeto->estado }} -
                                     </h1>
                                     <div class="border-2 border-black w-3/5 h-3/6 mx-auto mt-3 bg-gray-300"></div>

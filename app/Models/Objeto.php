@@ -38,4 +38,22 @@ class Objeto extends Model
     {
         return $this->hasMany(Agradecimiento::class);
     }
+
+    // ACCESSORS
+    // los Estados se mostraran como strings dependiendo el numero
+    public function getEstadoAttribute($value)
+    {
+        switch ($value) {
+            case 1:
+                return 'Perdido';
+            case 2:
+                return 'Encontrado';
+            case 3:
+                return 'Devuelto';
+            case 4:
+                return 'no_reclamado';
+            default:
+                return 'desconocido';
+        }
+    }
 }
