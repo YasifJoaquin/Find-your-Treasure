@@ -1,6 +1,6 @@
 <div>
     <!-- Menu -->
-<div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-4 lg:grid-cols-6 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
+<div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-4 lg:grid-cols-7 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
     <a href="{{ url('/') }}">
         <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarMapita" wire:mouseout="OcultarMapita">
             <p class="tracking-widest">
@@ -41,10 +41,17 @@
             </p>
         </div>
     </a>
-    <a href="{{ route('magradecimientos') }}">
+    <a href="{{ route('mobjetosp') }}">
         <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarBotin" wire:mouseout="OcultarBotin">
             <p class="tracking-widest">
-                Agradecimientos
+                Mis Perdidos
+            </p>
+        </div>
+    </a>
+    <a href="{{ route('mobjetose') }}">
+        <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarNosotros" wire:mouseout="OcultarNosotros">
+            <p class="tracking-widest">
+                Mis Encontrados
             </p>
         </div>
     </a>

@@ -64,8 +64,9 @@ class ObjetoEdit extends Component
             'imagen' => $this->imagen,
         ]);
 
-        // Puedes agregar un mensaje de éxito o redireccionar a otra página después de la actualización
-        session()->flash('message', '¡Objeto actualizado exitosamente!');
+        // Redireccionar a la vista de detalles del mismo registro
+    return redirect()->route('objeto.show', ['id' => $this->objetoId])
+        ->with('message', '¡Objeto actualizado exitosamente!');
     }
 
     public function render()

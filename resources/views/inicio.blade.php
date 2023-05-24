@@ -16,6 +16,12 @@
         @livewire('encuentralo-aqui')
     </div>
 
+    @role('marinero')
+    <h1>
+        hola
+    </h1>
+    @endrole
+
     @if(!auth()->check())
         <div class="absolute bottom-0 right-0 mb-4 mr-20">
             <a href="{{ route('login') }}" class="bg-gray-300 hover:bg-cyan-900 hover:text-white text-black font-bold py-2 px-4 rounded-full mr-2 text-2xl">Iniciar Sesión</a>
