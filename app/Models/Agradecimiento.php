@@ -23,7 +23,7 @@ class Agradecimiento extends Model
         return $this->belongsTo(User::class);
     }
 
-    // ACCESORS
+    // ----- ACCESORS -----
     // El agradecimiento se mostrara en minusculas con la primera letra en mayuscula
     public function getTextoAttribute($value)
     {
@@ -34,5 +34,12 @@ class Agradecimiento extends Model
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->isoFormat('dddd D [de] MMMM [del] YYYY');
+    }
+
+    // ---------- MUTATORS ----------
+    // la Descripcion se guardara en minusculas
+    public function setTextoAttribute($value)
+    {
+        $this->attributes['texto'] = strtolower($value);
     }
 }

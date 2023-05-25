@@ -39,7 +39,7 @@ class Objeto extends Model
         return $this->hasMany(Agradecimiento::class);
     }
 
-    // ACCESSORS
+    // ----- ACCESSORS -----
     // los Estados se mostraran como strings dependiendo el numero
     public function getEstadoAttribute($value)
     {
@@ -55,5 +55,67 @@ class Objeto extends Model
             default:
                 return 'desconocido';
         }
+    }
+
+    // Mostrar los objetos en mayuscula
+    public function getObjetoAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // la Marca se muestra en minuscula con la primera en mayuscula
+    public function getMarcaAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+    // El Color se muestra en minusculas con la primera en mayuscula
+    public function getColorAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+    // la Ubicacion se muestra en minusculas con la primera en mayuscula
+    public function getUbicacionAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+    // la Descripcion se mostrara en minusculas con la primera letra en mayuscula
+    public function getDescripcionAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setObjetoAttribute($value)
+    {
+        $this->attributes['objeto'] = strtolower($value);
+    }
+
+    // la Descripcion se guardara en minusculas
+    public function setMarcaAttribute($value)
+    {
+        $this->attributes['marca'] = strtolower($value);
+    }
+
+    // la Descripcion se guardara en minusculas
+    public function setColorAttribute($value)
+    {
+        $this->attributes['color'] = strtolower($value);
+    }
+
+    // la Descripcion se guardara en minusculas
+    public function setUbicacionAttribute($value)
+    {
+        $this->attributes['ubicacion'] = strtolower($value);
+    }
+
+    // la Descripcion se guardara en minusculas
+    public function setDescripcionAttribute($value)
+    {
+        $this->attributes['descripcion'] = strtolower($value);
     }
 }

@@ -30,30 +30,40 @@ class PermissionSeeder extends Seeder
         $role1->givePermissionTo('edit articles');
         $role1->givePermissionTo('delete articles');
 
-        $role2 = Role::create(['name' => 'almirante']);
-        $role2->givePermissionTo('publish articles');
-        $role2->givePermissionTo('unpublish articles');
+        $role2 = Role::create(['name' => 'vigia']);
+        $role2->givePermissionTo('edit articles');
+        $role2->givePermissionTo('delete articles');
 
-        $role3 = Role::create(['name' => 'capitan']);
+        $role3 = Role::create(['name' => 'almirante']);
+        $role3->givePermissionTo('publish articles');
+        $role3->givePermissionTo('unpublish articles');
+
+        $role4 = Role::create(['name' => 'capitan']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
         $user = \App\Models\User::factory()->create([
-            'nombres' => 'Example User',
-            'email' => 'test@example.com',
+            'nombres' => 'User Marinero',
+            'email' => 'marinero@example.com',
         ]);
         $user->assignRole($role1);
 
         $user = \App\Models\User::factory()->create([
-            'nombres' => 'Example Admin User',
-            'email' => 'admin@example.com',
+            'nombres' => 'User Vigia',
+            'email' => 'vigia@example.com',
         ]);
         $user->assignRole($role2);
 
         $user = \App\Models\User::factory()->create([
-            'nombres' => 'Example Super-Admin User',
-            'email' => 'superadmin@example.com',
+            'nombres' => 'User Almirante',
+            'email' => 'almirante@example.com',
         ]);
         $user->assignRole($role3);
+
+        $user = \App\Models\User::factory()->create([
+            'nombres' => 'User Capitan',
+            'email' => 'capitan@example.com',
+        ]);
+        $user->assignRole($role4);
     }
 }

@@ -21,11 +21,11 @@ class ObjetoFactory extends Factory
         $usuario = User::all();
         
         return [
-            'objeto'=>fake()->sentence(),
-            'marca'=>fake()->sentence(),
+            'objeto'=>fake()->sentence(1,3),
+            'marca'=>fake()->sentence(1),
             'color'=>fake()->randomElement(['rojo','verde','azul','amarillo','morado']),
             'ubicacion'=>fake()->randomElement(['Edificio M','Edificio N','Edificio L','Edificio E','Edificio D']),            
-            'descripcion'=>fake()->paragraph(3),
+            'descripcion'=>fake()->paragraph(2),
             'valor_sentimental'=>fake()->numberBetween(1,5), //valor entre 1 a 5 donde 1 es menor valor y 5 es el valor maximo
             'estado'=>fake()->numberBetween(1,4), // 1.-Perdido, 2.-Encontrado, 3.-Recuperado, 4.-NoReclamado
             'user_id'=>$usuario->random()

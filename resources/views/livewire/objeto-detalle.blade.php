@@ -48,18 +48,22 @@
 
                         @if ($estado == "Encontrado")
                             <h1 class="text-gray-600 tracking-wider text-xl mt-5"> Encontrado por: <span class="text-black tracking-wide text-lg"> {{ $detalles->user->nombres }} </span> </h1>
-                        @elseif ($user == Auth::user()->id)
-                        {{-- <a href="{{ route('objeto.edit', ['id' => $objeto->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black"> --}}
-                        <a href="{{ route('objeto.edit', ['id' => $detalles->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black">
-                            Editar
-                        </a>
-                        @endif
-
-                        @if ($estado == "Encontrado" && $user == Auth::user()->id)
+                        @elseif(auth()->check())
+                            @if ($user == Auth::user()->id)
                             {{-- <a href="{{ route('objeto.edit', ['id' => $objeto->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black"> --}}
                             <a href="{{ route('objeto.edit', ['id' => $detalles->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black">
                                 Editar
                             </a>
+                            @endif
+                        @endif
+
+                        @if(auth()->check())
+                            @if ($estado == "Encontrado" && $user == Auth::user()->id)
+                                {{-- <a href="{{ route('objeto.edit', ['id' => $objeto->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black"> --}}
+                                <a href="{{ route('objeto.edit', ['id' => $detalles->id]) }}" class="w-2/6 mx-auto mt-5 bg-red-500 text-gray-200 rounded-full p-2 tracking-widest text-lg border-2 border-black">
+                                    Editar
+                                </a>
+                            @endif
                         @endif
 
                     </div>

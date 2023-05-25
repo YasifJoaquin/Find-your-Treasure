@@ -40,8 +40,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/pruebas', Pruebas::class)->name('pruebas');
-    // Ruta para ver los detalles de un objeto perdido
-    Route::get('/objeto/{id}', ObjetoDetalle::class)->name('objeto.show');
     // Ruta para ver los detalles de mis objetos perdidos
     Route::get('/mis-objetos-perdidos', MisObjetosPerdidos::class)->name('mobjetosp');
     // Ruta para ver los detalles de mis objetos encontrados
@@ -69,3 +67,5 @@ Route::get('/crear-cartel-perdido', CartelPerdido::class)->name('cperdido');
 Route::get('/crear-cartel-encontrado', CartelEncontrado::class)->name('cencontrado');
 // Ruta para ver los objetos perdidos
 Route::get('/objetos-perdidos', ObjetosPerdidos::class)->name('operdidos');
+// Ruta para ver los detalles de un objeto perdido
+Route::get('/objeto/{id}', ObjetoDetalle::class)->name('objeto.show');

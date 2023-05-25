@@ -73,4 +73,47 @@ class User extends Authenticatable
     {
         return $this->hasMany(Agradecimiento::class);
     }
+
+    // ----- ACCESSORS -----
+    // Los Nombres se mostrara en minusculas con la primera letra en mayuscula
+    public function getNombresAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+    // Los Apellidos se mostrara en minusculas con la primera letra en mayuscula
+    public function getApellidosAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+    // El Correo se muestra en mayusculas
+    public function getEmailAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // La Contraseña se muestra en mayusculas
+    public function getPasswordAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = strtolower($value);
+    }
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setApellidosAttribute($value)
+    {
+        $this->attributes['apellidos'] = strtolower($value);
+    }
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
 }
