@@ -4,8 +4,9 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        <div class="mb-4 text-xl text-gray-900 tracking-widest text-justify">
+            {{ __('
+            ¿Olvídaste tu clave secreta? ¡No hay problema, camarada! Solo avísanos tu dirección de correo y te enviaremos un enlace para resetearla y que puedas elegir una nueva.') }}
         </div>
 
         @if (session('status'))

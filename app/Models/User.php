@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +28,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nombres',
+        'apellidos',
         'email',
         'password',
     ];
@@ -64,5 +67,53 @@ class User extends Authenticatable
     public function objetos(): HasMany
     {
         return $this->hasMany(Objeto::class);
+    }
+
+    public function agradecimiento(): HasMany
+    {
+        return $this->hasMany(Agradecimiento::class);
+    }
+
+    // ----- ACCESSORS -----
+    // Los Nombres se mostrara en minusculas con la primera letra en mayuscula
+    public function getNombresAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+    // Los Apellidos se mostrara en minusculas con la primera letra en mayuscula
+    public function getApellidosAttribute($value)
+    {
+        return ucfirst(strtolower($value));
+    }
+
+    // El Correo se muestra en mayusculas
+    public function getEmailAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // La Contraseña se muestra en mayusculas
+    public function getPasswordAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = strtolower($value);
+    }
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setApellidosAttribute($value)
+    {
+        $this->attributes['apellidos'] = strtolower($value);
+    }
+    // ----- MUTATORS -----
+    // la Descripcion se guardara en minusculas
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
     }
 }
