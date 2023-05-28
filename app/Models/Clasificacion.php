@@ -15,4 +15,18 @@ class Clasificacion extends Model
     {
         return $this->belongsToMany(Objeto::class, 'clasificacion_objetos');
     }
+
+    // ----- ACCESSOR -----
+    //muestra los datos en mayuscula
+    public function getEtiquetaAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    // ----- MUTATOR -----
+    // la Etiqueta se guardara en minusculas
+    public function setEtiquetaAttribute($value)
+    {
+        $this->attributes['etiqueta'] = strtolower($value);
+    }
 }

@@ -12,8 +12,16 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Pirata One', ...defaultTheme.fontFamily.sans],
             },
+            colors:{
+                red:{
+                    600: "#BF2806"
+                },
+                blue:{
+                    900: "#323F59"
+                }
+            }
         },
     },
 

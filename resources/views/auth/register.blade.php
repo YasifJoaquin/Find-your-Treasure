@@ -10,27 +10,33 @@
             @csrf
 
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-label for="nombres" value="{{ __('Nombres') }}" />
+                <x-input id="nombres" class="rounded-full border-2 border-red-600 text-center block w-full text-lg" type="text" name="nombres" :value="old('nombres')" required autofocus autocomplete="name" />
             </div>
-
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            
+            <div class="mt-2">
+                <x-label for="apellidos" value="{{ __('Apellidos') }}" />
+                <x-input id="apellidos" class="rounded-full border-2 border-red-600 text-center block w-full text-lg" type="text" name="apellidos" :value="old('apellidos')" required autocomplete="name" />
             </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            
+            <div class="mt-2">
+                <x-label for="email" value="{{ __('Botella de Mensajes (Correo)') }}" />
+                <x-input id="email" class="rounded-full border-2 border-red-600 text-center block w-full text-lg" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            
+            <div class="mt-2">
+                <x-label for="password" value="{{ __('Palabra secreta que abrirá el cofre del tesoro') }}" />
+                <x-input id="password" class="rounded-full border-2 border-red-600 text-center block w-full text-xl tracking-widest" type="password" name="password" required autocomplete="new-password" />
             </div>
+            
+            <div class="mt-2">
+                <x-label for="password_confirmation" value="{{ __('Repetir palabra secreta') }}" />
+                <x-input id="password_confirmation" class="rounded-full border-2 border-red-600 text-center block w-full text-xl tracking-widest" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+            
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
+                <div class="mt-2">
                     <x-label for="terms">
                         <div class="flex items-center">
                             <x-checkbox name="terms" id="terms" required />
@@ -46,7 +52,7 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-2">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>

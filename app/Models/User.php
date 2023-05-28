@@ -11,14 +11,21 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
+
+use App\Models\User;
+
+class User extends Authenticatable implements FilamentUser, HasName
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +33,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nombres',
+        'apellidos',
         'email',
         'password',
     ];
@@ -64,5 +72,21 @@ class User extends Authenticatable
     public function objetos(): HasMany
     {
         return $this->hasMany(Objeto::class);
+    }
+
+    public function agradecimiento(): HasMany
+    {
+        return $this->hasMany(Agradecimiento::class);
+    }
+
+    public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@itsmotul.edu.mx') && $this->hasRole('marinero');
+        
+    }
+
+    public function getFilamentName(): string
+    {
+        return "{$this->nombres} {$this->apellidos}";
     }
 }

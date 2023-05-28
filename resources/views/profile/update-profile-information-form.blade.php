@@ -1,10 +1,10 @@
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __(' ') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __(' ') }}
     </x-slot>
 
     <x-slot name="form">
@@ -28,13 +28,13 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->nombres }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
                 <div class="mt-2" x-show="photoPreview" style="display: none;">
                     <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                          x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                        x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
                     </span>
                 </div>
 
@@ -53,17 +53,36 @@
         @endif
 
         <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}" />
-            <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-input-error for="name" class="mt-2" />
+        <div class="mb-3">
+            <div class="inline-flex">
+                <div class="flex justify-center items-center">
+                    <label for="nombres" class="text-gray-300 text-2xl tracking-wider"> Nombres </label>
+                </div>
+                <x-input id="nombres" type="text" class="border-b-indigo-700 ml-2 block w-full" wire:model.defer="state.nombres" autocomplete="nombres" />
+                <x-input-error for="nombres" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="inline-flex">
+                
+                <div class="flex justify-center items-center">
+                    <label for="apellidos" class="text-gray-300 text-2xl tracking-wider"> Apellidos </label>
+                </div>
+                <x-input id="apellidos" type="text" class="border-b-indigo-700 ml-1 block w-full" wire:model.defer="state.apellidos" autocomplete="apellidos" />
+                <x-input-error for="apellidos" />
+            </div>
         </div>
 
         <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Email') }}" />
-            <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" autocomplete="username" />
-            <x-input-error for="email" class="mt-2" />
+        <div class="">
+            <div class="inline-flex">
+                <div class="flex justify-center items-center">
+                    <label for="email" class="text-gray-300 text-2xl tracking-wider"> Correo </label>
+                </div>
+                <x-input id="email" type="email" class="border-b-indigo-700 ml-6 block w-full" wire:model.defer="state.email" autocomplete="username" />
+                <x-input-error for="email" />
+            </div>
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
@@ -84,12 +103,12 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-action-message class="mr-3" on="saved">
+        <x-action-message class="" on="saved">
             {{ __('Saved.') }}
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-button>
     </x-slot>
 </x-form-section>

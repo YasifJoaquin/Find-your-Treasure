@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('marca')->nullable();
             $table->string('color');
             $table->string('ubicacion');
-            $table->string('descripcion')->nullable(); //la descripcion seria el estado del objeto(que estan el figma)
+            $table->longText('descripcion')->nullable(); //la descripcion seria el estado del objeto(que estan el figma)
             $table->unsignedBigInteger('valor_sentimental')->nullable();
-            $table->unsignedBigInteger('estado');
+            $table->unsignedBigInteger('estado'); // 1.- Perdido 2.- Encontrado 3.- Devuelto 4.- Sin Reclamar
             $table->string('imagen', 2048)->nullable();
             $table->foreignId('user_id')
                 ->constrained()
