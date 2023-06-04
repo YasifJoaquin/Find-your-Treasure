@@ -9,16 +9,16 @@
     
     <!-- Contenido -->
     <div class="absolute mt-32 right-0 flex flex-col items-center justify-center w-3/5">
-        <div class="w-4/6 h-72 flex justify-center items-center relative mb-5">
-            <img src="{{ asset('src/cartel-index.png')}}" alt="Cartel buscar tu tesoro" class="object-cover w-full h-full">
-            <p class="text-indigo-900 text-center text-8xl font-bold absolute leading-snug">Encuentra tu tesoro</p>
+        <div class="w-4/6 h-72 bg-amber-950 flex justify-center items-center relative mb-5">
+            
+            <p class="text-blue-900 text-center text-8xl font-bold absolute leading-snug">Encuentra tu tesoro</p>
         </div>
         @livewire('encuentralo-aqui')
     </div>
 
-    @role('marinero')
+    @role('almirante')
     <h1>
-        hola
+        tienes rol almirante
     </h1>
     @endrole
 

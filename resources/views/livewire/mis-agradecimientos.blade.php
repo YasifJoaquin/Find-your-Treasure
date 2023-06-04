@@ -51,7 +51,8 @@
                 </div>
             @else
                 <p class="text-3xl text-center tracking-wider">
-                    Arrr, por el momento ningún alma valiente se ha tomado la molestia de brindar su agradecimiento por tu magnífico gesto, camarada pirata.
+                    {{-- Arrr, por el momento ningún alma valiente se ha tomado la molestia de brindar su agradecimiento por tu magnífico gesto, camarada pirata. --}}
+                    De una MEX vas, dile 
                 </p>
             @endif
         </div>

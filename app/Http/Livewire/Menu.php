@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Menu extends Component
@@ -12,7 +13,16 @@ class Menu extends Component
     public $tesoro = False;
     public $botin = False;
     public $nosotros = False;
-    
+
+    public $cantidad_noti;
+
+    public function mount()
+    {
+        if(Auth::check())
+        {
+            $this->cantidad_noti = Auth::user()->unreadNotifications->count();
+        }
+    }
 
     /* Mostrar el icono del Mapita */
     public function MostrarMapita()
@@ -80,5 +90,8 @@ class Menu extends Component
         $this->nosotros = False;
     }
 
-    
+    public function render()
+    {
+        return view('livewire.menu');
+    }
 }

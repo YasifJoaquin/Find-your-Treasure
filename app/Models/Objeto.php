@@ -20,6 +20,8 @@ class Objeto extends Model
         'descripcion',
         'valor_sentimental',
         'estado',
+        'aceptado',
+        'oculto',
         'imagen',
         'user_id',
     ];

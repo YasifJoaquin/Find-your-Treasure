@@ -5,8 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Objeto;
 
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
+
 class ObjetoEdit extends Component
 {
+
+    use WithFileUploads;
+
     public $objetoId;
     public $objeto;
     public $marca;
@@ -17,6 +23,7 @@ class ObjetoEdit extends Component
     public $estado;
     public $imagen;
     public $valor;
+    public $image;
 
     // Variable donde se almacenara el valor de la importancia
     public $importanceLevel = 0;
@@ -36,6 +43,7 @@ class ObjetoEdit extends Component
         'color' => 'string|min:4|regex:/^[a-zA-ZñÑ\s]+$/u',
         'descripcion' => 'string|min:10|max:100|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
         'ubicacion' => 'string|regex:/^[a-zA-ZñÑ\s]+$/u',
+        'image' => 'required|mimes:jpg,jpeg,png|max:10240|image',
     ];
 
     protected $messages = [
@@ -51,6 +59,9 @@ class ObjetoEdit extends Component
         'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números y espacios.',
         'ubicacion.required' => 'El campo UBICACION es requerido.',
         'ubicacion.regex' => 'El campo UBICACION solo puede contener letras y espacios.',
+        'image.required' => 'Se necesita una imagen del objeto',
+        'image.mime' => 'Los formatos de imagenes validos son jpg, jpeg y png',
+        'image.max' => 'El tamaño maximo de la imagen debe de ser de 10mb',
     ];
 
     public function mount($id)
@@ -73,6 +84,9 @@ class ObjetoEdit extends Component
         // Verificar validacion
         $this->validate();
 
+        //Renombrar la imagen 
+        $nombreImagen = str_replace(' ', '_', $this->objeto) . '_' . "actualizado" . '.' . $this->image->extension();
+
         if ($this->importanceLevel) {
             $this->valor = $this->importanceLevel;
         } else {
@@ -87,12 +101,15 @@ class ObjetoEdit extends Component
             'ubicacion' => $this->ubicacion,
             'descripcion' => $this->descripcion,
             'valor_sentimental' => $this->valor,
-            'imagen' => $this->imagen,
+            'imagen' => $nombreImagen,
         ]);
 
+        $rutaImagen = $this->image->storeAs('public/imagenes', $nombreImagen);
+        $rutaImagen = str_replace('public/', '', $rutaImagen);
+
         // Redireccionar a la vista de detalles del mismo registro
-    return redirect()->route('objeto.show', ['id' => $this->objetoId])
-        ->with('message', '¡Objeto actualizado exitosamente!');
+        return redirect()->route('objeto.show', ['id' => $this->objetoId])
+            ->with('message', '¡Objeto actualizado exitosamente!');
     }
 
     public function render()

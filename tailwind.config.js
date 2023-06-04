@@ -14,6 +14,21 @@ module.exports = {
             fontFamily: {
                 sans: ['Pirata One', ...defaultTheme.fontFamily.sans],
             },
+            colors:{
+                red:{
+                    600: "#BF2806"
+                },
+                blue:{
+                    900: "#323F59"
+                },
+                amber:{
+                    900: "#efe5cc",
+                    950: "#e8cc94"
+                },
+                neutral:{
+                    900: "#842907"
+                }
+            }
         },
     },
 

@@ -43,7 +43,7 @@
             @livewire('menu')
         </div>
 
-        <div class="w-3/5 h-4/5 m-auto rounded-xl bg-center flex flex-col justify-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
+        <div class="w-3/5 h-4/5 m-auto rounded-xl flex flex-col justify-center bg-amber-900">
             <form wire:submit.prevent="updateObjeto" class="col-span-8 h-full">
 
                 <div class="grid grid-cols-8 h-full text-center">
@@ -61,9 +61,37 @@
                 
                     <div class=" invisible"></div>
                     <div class=" invisible"></div>
-                    <div class="col-span-4">
-                        |     Imagen mas adelante |
-                    </div>
+                    <div class="col-span-4 flex flex-col items-center my-2">
+                    @if (isset($image))
+                        <div class="flex items-center justify-center">
+                            <div class="w-24 h-24 mr-2">
+                                <img src="{{ $image->temporaryURL() }}" alt="" class="h-full w-full">
+                            </div>
+                            <div class="w-1/2">
+                                <label class="w-20 h-20 bg-yellow-500 flex justify-center items-center cursor-pointer border-4 border-gray-400 rounded-3xl">
+                                    <div class=" opacity-50 hover:opacity-100 h-full w-full flex items-center justify-center">
+                                        <input type="file" id="image" wire:model="image" class="hidden">
+                                        <img src="{{ asset('src/camara-1.png') }}" alt="Icono" class="w-4/6 h-4/6">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    @else
+                        <div class="flex items-center justify-center">
+                            <div class="w-24 h-24 mr-2">
+                                <img src="{{ asset('storage/imagenes/' . $imagen) }}" alt="" class="h-full w-full">
+                            </div>
+                            <div class="w-1/2">
+                                <label class="w-20 h-20 bg-yellow-500 flex justify-center items-center cursor-pointer border-4 border-gray-400 rounded-3xl">
+                                    <div class=" opacity-50 hover:opacity-100 h-full w-full flex items-center justify-center">
+                                        <input type="file" id="image" wire:model="image" class="hidden">
+                                        <img src="{{ asset('src/camara-1.png') }}" alt="Icono" class="w-4/6 h-4/6">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    @endif
+                </div>
                     <div class=" invisible"></div>
                     <div class=" invisible"></div>
                 
