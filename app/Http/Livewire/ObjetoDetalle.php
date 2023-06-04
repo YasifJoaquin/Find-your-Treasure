@@ -21,6 +21,16 @@ class ObjetoDetalle extends Component
         //dd($this->estado);
     }
 
+    public function eliminar($id)
+    {
+        $publicacion = Objeto::find($id);
+        $publicacion->update([
+            'oculto' => 1,
+        ]);
+
+        return redirect()->route('operdidos');
+    }
+
     public function render()
     {
         return view('livewire.objeto-detalle');
