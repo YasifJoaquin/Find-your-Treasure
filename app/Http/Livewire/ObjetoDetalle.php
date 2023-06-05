@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Objeto;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class ObjetoDetalle extends Component
 {
     public $detalles;
@@ -20,7 +22,9 @@ class ObjetoDetalle extends Component
         $this->estado = $this->detalles->estado;
         $this->user = $this->detalles->user_id;
 
-        $this->rol = auth()->user()->hasRole('marinero');
+        if (auth()->check()){
+            $this->rol = auth()->user()->hasRole('marinero');
+        }
         //dd($this->rol);
     }
 
@@ -28,12 +32,15 @@ class ObjetoDetalle extends Component
     {
         $publicacion = Objeto::find($id);
 
-        if($this->rol == false){
+        if ($this->rol == false) {
             $publicacion->delete();
+            Alert::toast('Cartel eliminado','success');
         } else {
             $publicacion->update([
                 'oculto' => 1,
             ]);
+            Alert::toast('Cartel Eliminado','success');
+
         }
 
         return redirect()->route('operdidos');

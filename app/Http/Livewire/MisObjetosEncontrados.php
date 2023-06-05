@@ -13,6 +13,7 @@ class MisObjetosEncontrados extends Component
     {
         $misobjetos = Objeto::where('user_id', auth()->user()->id)
         ->where('estado', 2)
+        ->where('oculto', 2)
         ->latest()
         ->paginate(3);
         //dd($misobjetos);

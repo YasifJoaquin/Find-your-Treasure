@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Notifications\ClientNotification;
 use App\Events\ClientEvent;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class Notificaciones extends Component
 {
     use WithPagination;
@@ -45,6 +47,7 @@ class Notificaciones extends Component
         //session()->flash('message', 'Notificación aceptada correctamente.');
 
         //return redirect()->route('notificaciones');
+        Alert::toast('Cartel Aceptado','Satisfactorio');
     }
 
     public function rechazar_noti($id_notificacion, $id_objeto)
@@ -61,6 +64,7 @@ class Notificaciones extends Component
 
         //auth()->user()->unreadNotifications->markAsRead();
         //session()->flash('message', 'Notificación rechazada correctamente.');
+        Alert::toast('Cartel Rechazado','Satisfactorio');
     }
 
     public function publicar($objeto)

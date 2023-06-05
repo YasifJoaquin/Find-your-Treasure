@@ -17,6 +17,8 @@ use Livewire\WithFileUploads;
 use App\Notifications\ObjectNotification;
 use App\Events\ObjectEvent;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class CartelPerdido extends Component
 {
 
@@ -105,7 +107,9 @@ class CartelPerdido extends Component
 
             //guardar notificacion de objeto creado en la Base de Datos
             $this->notificacion($nuevo_objeto);
-            
+            // Mensaje de alerta
+            Alert::success('SuccessAlert','En breve se le notificara si su cartel cumple con las normativas de la pagina');
+            // Redireccionamiento
             return redirect()->route('mobjetosp');
         }
 

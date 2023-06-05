@@ -8,6 +8,8 @@ use App\Models\Objeto;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class ObjetoEdit extends Component
 {
 
@@ -108,6 +110,8 @@ class ObjetoEdit extends Component
             // Actualizar la imagen en la base de datos
             $objeto->update(['imagen' => $nombreImagen]);
         }
+        // Mensaje de confirmacion
+        Alert::toast('Cartel Editado','info');
 
         // Redireccionar a la vista de detalles del mismo registro
         return redirect()->route('objeto.show', ['id' => $this->objetoId])

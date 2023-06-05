@@ -3,7 +3,7 @@
         @livewire('menu')
     </div>
     
-    <div>
+    <div x-data="modal()" x-cloak>
         <div class="mt-6 flex justify-center items-center text-center relative">
             <div class="relative top-0 left-0 w-5/6 h-auto flex flex-col bg-amber-950" name="a">
                 <!-- Contenido del div con la propiedad "name=a" -->
@@ -56,7 +56,7 @@
                                             </a>
                                         </div>
                                         <div class="w-1/6 ml-14">
-                                            <button wire:click="eliminar('{{ $detalles->id }}')" class="w-auto mx-auto">
+                                            <button @click="openModal" class="w-auto mx-auto">
                                                 <img src="{{asset('src/muerte.png')}}" alt="Boton de ocultar" class="w-14 h-14">
                                                 <h1 class="mt-1 text-xl"> Eliminar </h1>
                                             </button>
@@ -66,10 +66,75 @@
                             @endif
                         </div>
 
+                        <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="fixed z-10 inset-0 overflow-y-auto" style="display: none;">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                    <div class="absolute inset-0 bg-red-400/70 opacity-75"></div>
+                                </div>
+                    
+                                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                    
+                                <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 transform translate-y-0 sm:scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 transform translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                    <div class="bg-amber-950 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                        <div class="sm:flex sm:items-start">
+                                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-300 sm:mx-0 sm:h-10 sm:w-10">
+                                                <!-- Icono del modal -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                                </svg>
+                                            </div>
+
+                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                <h3 class="text-2xl leading-6 font-medium text-center text-red-600 tracking-wider" id="modal-headline">
+                                                    Alto ahi marinero
+                                                </h3>
+                                                <div class="mt-2">
+                                                    <p class="text-xl text-center text-gray-900">
+                                                        ¿Estás seguro de querer hacer desaparecer este pergamino?
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <button @click="closeModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                    
+                                    <div class="bg-amber-950 px-4 py-3 sm:px-6 sm:flex sm:flex-col items-center">
+                                        <button @click="closeModal" wire:click="eliminar('{{ $detalles->id }}')" class="w-1/6 mx-auto bg-amber-900 hover:bg-gray-400/70 py-1 border-2 border-black rounded-lg">
+                                            <img src="{{asset('src/muerte.png')}}" alt="Boton de ocultar" class="w-10 h-10 mx-auto">
+                                            <h1 class="text-xl"> Eliminar </h1>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 @endif
             </div>
         </div>
     </div>
+
+    <script>
+        function modal() {
+            return {
+                isModalOpen: false,
+    
+                openModal() {
+                    this.isModalOpen = true;
+                },
+    
+                closeModal() {
+                    this.isModalOpen = false;
+                },
+            };
+        }
+    </script>
+
 </div>

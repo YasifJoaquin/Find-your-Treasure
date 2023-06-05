@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
     /**
@@ -43,12 +45,16 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
+
         } else {
             $user->forceFill([
                 'nombres' => $input['nombres'],
                 'apellidos' => $input['apellidos'],
                 'email' => $input['email'],
             ])->save();
+
+            // Alerta de actualizacion de datos
+            Alert::toast('Foto de perfil actualizada','success');
         }
     }
 
