@@ -25,33 +25,41 @@
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
 
-                @foreach ($objetos as $objeto)
-                    <div class="col-span-3 row-span-6">
-                        <div class="w-4/6 h-5/6 mx-auto bg-amber-950">
-                            <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
-                                <div class="h-full pb-20">
-                                    <h1 class="tracking-widest text-3xl font-bold w-full pt-5">
-                                        - {{ $objeto->estado }} -
-                                    </h1>
-                                    <div class="w-4/5 h-40 mx-auto mt-3 mb-2 bg-gray-300">
-                                        <img src="{{ asset('storage/imagenes/' . $objeto->imagen) }}" alt="Imagen del objeto" class="w-full h-full">
-                                    </div>
-    
-                                    <h2 class="text-2xl tracking-wider font-semibold px-4">
-                                        {{ $objeto->objeto }}
-                                    </h2>
-                                    <h3 class="text-lg tracking-wider px-4">
-                                        {{ $objeto->ubicacion }}
-                                    </h3>
-                                </div> 
-                            </a>
-                        </div>
+                @if ($objetos->count() == 0)
+                    <div class="col-span-9 mx-auto mt-40 mb-48">
+                        <h1 class="text-center text-5xl text-black">
+                            Ahoy marinero, se el primero en publicar tu cartel.!
+                        </h1>
                     </div>
-                @endforeach
+                @else
+                    @foreach ($objetos as $objeto)
+                        <div class="col-span-3 row-span-6">
+                            <div class="w-4/6 h-5/6 mx-auto bg-amber-950">
+                                <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
+                                    <div class="h-full pb-20">
+                                        <h1 class="tracking-widest text-3xl font-bold w-full pt-5">
+                                            - {{ $objeto->estado }} -
+                                        </h1>
+                                        <div class="w-4/5 h-40 mx-auto mt-3 mb-2 bg-gray-300">
+                                            <img src="{{ asset('storage/imagenes/' . $objeto->imagen) }}" alt="Imagen del objeto" class="w-full h-full">
+                                        </div>
 
-                <div class="col-span-9 mx-auto mb-5">
-                    {{ $objetos->links() }}
-                </div>
+                                        <h2 class="text-2xl tracking-wider font-semibold px-4">
+                                            {{ $objeto->objeto }}
+                                        </h2>
+                                        <h3 class="text-lg tracking-wider px-4">
+                                            {{ $objeto->ubicacion }}
+                                        </h3>
+                                    </div> 
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class="col-span-9 mx-auto mb-5">
+                        {{ $objetos->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

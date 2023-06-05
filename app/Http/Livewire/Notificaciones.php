@@ -36,6 +36,9 @@ class Notificaciones extends Component
             'aceptado' => 1,
         ]);
 
+        //Alert::toast('Cartel Aceptado','info');
+        session()->flash('aceptado', 'Cartel Rechazado Satisfactoriamente');
+
         auth()->user()->unreadNotifications
             ->when($id_notificacion, function($query) use ($id_notificacion){
                 return $query->where('id', $id_notificacion);
@@ -47,7 +50,6 @@ class Notificaciones extends Component
         //session()->flash('message', 'Notificación aceptada correctamente.');
 
         //return redirect()->route('notificaciones');
-        Alert::toast('Cartel Aceptado','Satisfactorio');
     }
 
     public function rechazar_noti($id_notificacion, $id_objeto)
@@ -57,6 +59,8 @@ class Notificaciones extends Component
             'aceptado' => 2,
         ]);
 
+        session()->flash('rechazado', 'Cartel Rechazado Satisfactoriamente');
+
         auth()->user()->unreadNotifications
             ->when($id_notificacion, function($query) use ($id_notificacion){
                 return $query->where('id', $id_notificacion);
@@ -64,7 +68,6 @@ class Notificaciones extends Component
 
         //auth()->user()->unreadNotifications->markAsRead();
         //session()->flash('message', 'Notificación rechazada correctamente.');
-        Alert::toast('Cartel Rechazado','Satisfactorio');
     }
 
     public function publicar($objeto)

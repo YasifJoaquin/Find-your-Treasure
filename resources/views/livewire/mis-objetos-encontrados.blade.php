@@ -10,7 +10,7 @@
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
                 <div class="col-span-3">
-                    <div class="border-2 border-black flex justify-between mt-3 items-center bg-red-600 rounded-xl">
+                    <div class="border-2 border-black flex justify-between mt-3 items-center bg-blue-900 rounded-xl">
                         <img src="{{ asset('src/clavo.png') }}" class="ml-2 w-10 h-10">
                         <h1 class="text-gray-200 text-2xl tracking-widest"> Mis Objetos Encontrados </h1>
                         <img src="{{ asset('src/clavo.png') }}" class="mr-2 w-10 h-10">

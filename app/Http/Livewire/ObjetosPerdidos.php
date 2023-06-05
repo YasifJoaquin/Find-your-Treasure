@@ -17,7 +17,6 @@ class ObjetosPerdidos extends Component
                     ->where('oculto', 2)
                     ->latest()
                     ->paginate(3);
-
         //dd($objetos);
 
         return view('livewire.objetos-perdidos', [

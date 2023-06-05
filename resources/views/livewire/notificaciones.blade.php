@@ -3,6 +3,26 @@
         @livewire('menu')
     </div>
 
+        @if (session()->has('aceptado'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)" x-show="show" @click.away="show = false" class="fixed top-10 right-4 z-50">
+            <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-2"
+                class="bg-green-500 text-white text-xl tracking-wide rounded-lg shadow-lg px-4 py-2">
+                {{ session('aceptado') }}
+                <button @click="show = false" class="ml-2 text-sm text-white underline">Ocultar</button>
+            </div>
+        </div>
+        @elseif (session()->has('rechazado'))
+        <div x-data="{ show: false }" x-init="setTimeout(() => show = true, 300)" x-show="show" @click.away="show = false" class="fixed top-10 right-4 z-50">
+            <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-2"
+                class="bg-red-500 text-black text-xl tracking-wide rounded-lg shadow-lg px-4 py-2">
+                {{ session('rechazado') }}
+                <button @click="show = false" class="ml-2 text-sm text-white underline">Ocultar</button>
+            </div>
+        </div>
+        @endif
+
         <div class="mt-14 flex justify-center items-center text-center relative">
             <div class="top-0 left-0 w-5/6 bg-amber-950 h-96 flex justify-center flex-col z-30" name="a">
                 @if ($notificaciones->count() === 0)
