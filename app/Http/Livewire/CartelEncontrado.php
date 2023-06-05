@@ -30,9 +30,9 @@ class CartelEncontrado extends Component
 
     // Validacion de los inputs
     protected $rules = [
-        'objeto' => 'string|min:3|max:50',
+        'objeto' => 'string|min:3|max:20',
         'color' => 'string|min:4|regex:/^[a-zA-ZñÑ\s]+$/u',
-        'descripcion' => 'string|min:10|max:100|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
+        'descripcion' => 'string|min:10|max:30|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
         'ubicacion' => 'string|regex:/^[a-zA-ZñÑ\s]+$/u',
         'image' => 'required|mimes:jpg,jpeg,png|max:10240|image',
     ];
@@ -40,13 +40,13 @@ class CartelEncontrado extends Component
     protected $messages = [
         'objeto.required' => 'El campo OBJETO es requerido.',
         'objeto.min' => 'El campo OBJETO no puede tener más de 3 caracteres.',
-        'objeto.max' => 'El campo OBJETO no puede tener más de 50 caracteres.',
+        'objeto.max' => 'El campo OBJETO no puede tener más de 20 caracteres.',
         'color.required' => 'El campo COLOR es requerido.',
         'color.min' => 'El campo COLOR debe tener al menos 4 caracteres.',
         'color.regex' => 'El campo COLOR solo puede contener letras y espacios.',
         'descripcion.required' => 'El campo DESCRIPCION es requerido.',
         'descripcion.min' => 'El campo DESCRIPCION debe tener al menos 10 caracteres.',
-        'descripcion.max' => 'El campo DESCRIPCION no puede tener más de 100 caracteres.',
+        'descripcion.max' => 'El campo DESCRIPCION no puede tener más de 30 caracteres.',
         'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números y espacios.',
         'ubicacion.required' => 'El campo UBICACION es requerido.',
         'ubicacion.regex' => 'El campo UBICACION solo puede contener letras y espacios.',

@@ -21,7 +21,7 @@
                     </div>
                     <div name="div2" class="col-span-1 h-96 flex flex-col">
                         <!-- Contenido del div2 -->
-                        <div class="w-4/6 h-auto mx-auto rounded-xl py-5 px-8 text-center bg-amber-900">
+                        <div class="w-4/6 h-auto mx-auto rounded-xl py-5 px-4 text-center bg-amber-900">
                             <p class="text-black tracking-wide text-lg"> <span class="text-gray-600 tracking-wider text-xl"> Objeto: </span> {{ $detalles->objeto  }} </p>
                             <p class="text-black tracking-wide text-lg"> <span class="text-gray-600 tracking-wider text-xl"> Marca: </span> {{ $detalles->marca  }} </p>
                             <p class="text-black tracking-wide text-lg"> <span class="text-gray-600 tracking-wider text-xl"> Color: </span> {{ $detalles->color  }} </p>
@@ -47,7 +47,7 @@
                             @endif
 
                             @if(auth()->check())
-                                @if ($detalles->user_id == Auth::user()->id)
+                                @if ($detalles->user_id == Auth::user()->id || $rol == false)
                                     <div class="col-span-2 w-full flex mt-5 justify-center">
                                         <div class="w-1/6 mr-14">
                                             <a href="{{ route('objeto.edit', ['id' => $detalles->id]) }}" class="w-auto mx-auto">

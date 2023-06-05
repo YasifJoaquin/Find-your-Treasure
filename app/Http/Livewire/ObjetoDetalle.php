@@ -11,6 +11,7 @@ class ObjetoDetalle extends Component
     public $cantidad_valor;
     public $estado;
     public $user;
+    public $rol;
 
     public function mount($id)
     {
@@ -18,15 +19,22 @@ class ObjetoDetalle extends Component
         $this->cantidad_valor = $this->detalles->valor_sentimental;
         $this->estado = $this->detalles->estado;
         $this->user = $this->detalles->user_id;
-        //dd($this->estado);
+
+        $this->rol = auth()->user()->hasRole('marinero');
+        //dd($this->rol);
     }
 
     public function eliminar($id)
     {
         $publicacion = Objeto::find($id);
-        $publicacion->update([
-            'oculto' => 1,
-        ]);
+
+        if($this->rol == false){
+            $publicacion->delete();
+        } else {
+            $publicacion->update([
+                'oculto' => 1,
+            ]);
+        }
 
         return redirect()->route('operdidos');
     }
