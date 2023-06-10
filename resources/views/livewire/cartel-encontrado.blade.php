@@ -4,7 +4,8 @@
             @livewire('menu')
         </div>
 
-        <div class="w-3/5 h-auto m-auto rounded-xl flex flex-col justify-center bg-amber-900">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-6">
+            <div class="w-3/5 h-auto m-auto rounded-xl flex flex-col justify-center bg-amber-900">
             <form wire:submit.prevent="crearCartel" class="col-span-8 h-full">
 
                 <div class="grid grid-cols-8 h-full text-center">
@@ -93,7 +94,7 @@
                     <div class=" invisible"></div>
                     <div class=" invisible"></div>
                     <div class=" col-span-2 flex justify-center items-center">
-                        <button type="submit" class="bg-amber-800 hover:bg-amber-900 text-white tracking-widest py-2 px-4 my-2 rounded-full">
+                        <button type="submit" class="bg-amber-800 hover:bg-blue-900 text-white tracking-widest py-2 px-4 my-2 rounded-full">
                             Crear Cartel
                         </button>
                     </div>
@@ -104,6 +105,7 @@
                 </div>
 
             </form>
+        </div>
         </div>
     </div>
 </div>

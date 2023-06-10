@@ -1,5 +1,6 @@
-<div>
-    <!-- Menu -->
+<div x-data="data()" x-cloak x-init="start()">
+    <!-- Menu 2xl, xl, lg, md-->
+    <div x-data="{mostrar_icono: null}" x-cloak>
     @role(['vigia', 'almirante', 'capitan'])
     <div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-3 lg:grid-cols-5 rounded-full bg-red-600 h-auto mt-3 w-5/6 mx-auto">
         <a href="{{ url('/') }}">
@@ -25,7 +26,7 @@
             </div>
         </a>
         
-        {{-- <a href="{{ route('magradecimientos') }}"> --}}
+        <!--{{-- <a href="{{ route('magradecimientos') }}"> --}}-->
         <a href="#eventos">
             <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2">
                 <p class="tracking-widest mt-1 text-xl">
@@ -33,10 +34,8 @@
                 </p>
             </div>
         </a>
-        {{-- <a href="{{ route('nosotros') }}"> --}}
+        <!--{{-- <a href="{{ route('nosotros') }}"> --}}-->
             
-
-            <div x-data="data()" x-cloak x-init="start()">
                 <div @click="abierto()" class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 relative cursor-pointer">
                     {{-- Detalles de notificacion --}}
                     <button class="w-1/6 pt-1 mx-auto h-full">
@@ -85,14 +84,11 @@
                     </div>
                     @endif
                 </div>
-            </div>
-            
-            
     </div>
     @else
-    <div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-3 lg:grid-cols-6 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
+        <div class="grid grid-cols-2 text-base max-sm:hidden sm:text-lg sm:grid-cols-3 lg:grid-cols-6 rounded-full bg-red-600 h-auto mt-3 w-10/12 mx-auto">
         <a href="{{ url('/') }}">
-            <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarMapita" wire:mouseout="OcultarMapita">
+            <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 1" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     Inicio
                 </p>
@@ -101,7 +97,7 @@
 
         @if(auth()->check())
         <a href="{{ route('profile.show') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
+            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 2" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     {{ Auth::user()->nombres }}
                 </p>
@@ -109,7 +105,7 @@
         </a>
         @else
         <a href="{{ route('login') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarPerfil" wire:mouseout="OcultarPerfil">
+            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 2" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     Perfil
                 </p>
@@ -118,28 +114,28 @@
         @endif
         
         <a href="{{ route('pregunta') }}">
-            <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarCartel" wire:mouseout="OcultarCartel">
+            <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 3" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     Crear Cartel
                 </p>
             </div>
         </a>
         <a href="{{ route('operdidos') }}">
-            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarTesoro" wire:mouseout="OcultarTesoro">
+            <div class="bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 4" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     Objetos Perdidos
                 </p>
             </div>
         </a>
         <a href="{{ route('magradecimientos') }}">
-            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarNosotros" wire:mouseout="OcultarNosotros">
+            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 5" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     Mis Agradecimientos
                 </p>
             </div>
         </a>
         <a href="{{ route('nosotros') }}">
-            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" wire:mouseover="MostrarNosotros" wire:mouseout="OcultarNosotros">
+            <div class="hidden lg:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2" id="hijo" @mouseover="mostrar_icono = 6" @mouseout="mostrar_icono = null">
                 <p class="tracking-widest">
                     About US
                 </p>
@@ -149,64 +145,107 @@
     @endrole
 
     <!-- Iconos del hover -->
-    
-    {{-- <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 h-auto w-10/12 mx-auto">
-        @if ($mapita == True)
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 h-auto w-10/12 mx-auto">
+        
+            <div x-show="mostrar_icono == 1" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
                 <img src="{{ asset('src/5158493.png')}}" alt="Mapita" class="w-14 h-14">
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        @elseif($perfil == True)
-            <div></div>
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
-                <img src="{{ asset('src/vispera-de-todos-los-santos.png')}}" alt="Perfil" class="w-14 h-14">
+            <div x-show="mostrar_icono == 1"></div>
+            <div x-show="mostrar_icono == 1"></div>
+            <div x-show="mostrar_icono == 1"></div>
+            <div x-show="mostrar_icono == 1"></div>
+            <div x-show="mostrar_icono == 1"></div>
+            
+            <div x-show="mostrar_icono == 2"></div>
+            <div x-show="mostrar_icono == 2" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+                <img src="{{ asset('src/pirataa.png')}}" alt="Perfil" class="w-14 h-14">
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        @elseif($cartel == True)
-            <div></div>
-            <div></div>
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+            <div x-show="mostrar_icono == 2"></div>
+            <div x-show="mostrar_icono == 2"></div>
+            <div x-show="mostrar_icono == 2"></div>
+            <div x-show="mostrar_icono == 2"></div>
+        
+            <div x-show="mostrar_icono == 3"></div>
+            <div x-show="mostrar_icono == 3"></div>
+            <div x-show="mostrar_icono == 3" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
                 <img src="{{ asset('src/pergamino.png')}}" alt="Cartel" class="w-14 h-14">
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-        @elseif($tesoro == True)
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+            <div x-show="mostrar_icono == 3"></div>
+            <div x-show="mostrar_icono == 3"></div>
+            <div x-show="mostrar_icono == 3"></div>
+        
+            <div x-show="mostrar_icono == 4"></div>
+            <div x-show="mostrar_icono == 4"></div>
+            <div x-show="mostrar_icono == 4"></div>
+            <div x-show="mostrar_icono == 4" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
                 <img src="{{ asset('src/Perfil.png')}}" alt="Tesoro" class="w-14 h-14">
             </div>
-            <div></div>
-            <div></div>
-        @elseif($botin == True)
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+            <div x-show="mostrar_icono == 4"></div>
+            <div x-show="mostrar_icono == 4"></div>
+        
+            <div x-show="mostrar_icono == 5"></div>
+            <div x-show="mostrar_icono == 5"></div>
+            <div x-show="mostrar_icono == 5"></div>
+            <div x-show="mostrar_icono == 5"></div>
+            <div x-show="mostrar_icono == 5" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
                 <img src="{{ asset('src/botella.png')}}" alt="Botin" class="w-14 h-14">
             </div>
-            <div></div>
-        @elseif($nosotros == True)
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
+            <div x-show="mostrar_icono == 5"></div>
+        
+            <div x-show="mostrar_icono == 6"></div>
+            <div x-show="mostrar_icono == 6"></div>
+            <div x-show="mostrar_icono == 6"></div>
+            <div x-show="mostrar_icono == 6"></div>
+            <div x-show="mostrar_icono == 6"></div>
+            <div x-show="mostrar_icono == 6" class="rounded-full my-auto h-full p-1 flex items-center justify-center" id="hijo">
                 <img src="{{ asset('src/gancho.png')}}" alt="Nosotros" class="w-14 h-14">
             </div>
-        @endif
-    </div> --}}
+        
+        </div>
+    </div>
+    
+    <!--Menu para celulares-->
+    <header class="h-14 bg-red-600 sm:hidden w-full">
+      <div x-data="{ isActive: false }" class="relative flex justify-center sm:hidden">
+        <div class="w-screen h-14 flex items-center justify-center">
+            <div class="w-4/5 text-center">
+                <a href="{{ url('/') }}" class="text-3xl text-gray-200 tracking-wider"> Encuentra tu Tesoro </a>
+            </div>
+            <div class="inline-flex items-center overflow-hidden rounded-md border bg-amber-950 w-1/5">
+                <button x-on:click="isActive = !isActive" class="h-full p-2 text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 font-bold">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+             </div>
+        </div>
+        
+        
+        <div class="absolute end-0 z-10 mt-2 w-96 rounded-md border border-black bg-amber-900 shadow-lg" x-cloak x-transition x-show="isActive" x-on:click.away="isActive = false" x-on:keydown.escape.window="isActive = false">
+            <div class="p-2 w-96">
+              <a href="{{ url('/') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> Inicio </a>
+        
+              @if(auth()->check())
+              <a href="{{ route('profile.show') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> {{ Auth::user()->nombres }} </a>
+              @else
+              <a href="{{ route('login') }}" class="block rounded-lg px-4 py-2 text-xl trackin-wide-st text-black"> Perfil </a>
+              @endif
+        
+              <a href="{{ route('pregunta') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> Crear Cartel </a>
+        
+              <a href="{{ route('operdidos') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> Objetos Perdidos </a>
+              @if(auth()->check())
+              <button wire:click="cerrar_sesion" class="flex w-full items-center block rounded-lg px-4 py-2 text-xl trackin-widest text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                  </svg>
+                  Cerrar Sesion
+              </button>
+              @endif
+            </div>
+         </div>
+      </div>
+    </header>
 
     <script>
         function data(){

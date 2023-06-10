@@ -1,13 +1,13 @@
 <x-app-layout>
     
-    <div class="relative">
+    <div class="relative z-50">
         @livewire('menu')
     </div>
 
-    <div>
+    <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center border-2 border-black">
         <div class="mt-6 flex justify-center text-center relative">
             {{-- Grids del perfil --}}
-            <div class="w-4/5 h-4/5 grid grid-cols-5 gap-2 z-10 bg-amber-950 px-5">
+            <div class="w-full h-4/5 grid grid-cols-5 gap-2 z-10 bg-amber-950 px-5">
                 {{-- Div principal, titulo --}}
                 <div class="col-span-5 rounded-xl w-6/12 h-14 mx-auto bg-red-600 flex justify-center items-center mt-3 border-2 border-black">
                     <div class="w-3/12"> 

@@ -20,17 +20,27 @@
 
         <!-- Styles -->
         @livewireStyles
+        
+        <style>
+            body {
+                background-image: url({{ asset('src/gradient.png') }});
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        </style>
     </head>
-    <body class="inset-0 bg-no-repeat bg-center bg-cover" style="background-image: url({{ asset('src/gradient.png') }}) ;">
-
+    
+    <body>
         <div>
             @yield('Contenido')
         </div>
-
+    
         @stack('modals')
-
+    
         @livewireScripts
-
+    
         @include('sweetalert::alert')
     </body>
+
 </html>

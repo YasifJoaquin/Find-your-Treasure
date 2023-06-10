@@ -20,8 +20,18 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <style>
+            body {
+                background-image: url({{ asset('src/Fondo.png') }});
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        </style>
     </head>
-    <body class="inset-0 bg-no-repeat bg-cover" style="background-image: url({{ asset('src/Fondo.png') }}) ;">
+    
+    <body>
 
         <div class="font-sans text-gray-900 antialiased absolute z-50 w-screen">
             {{ $slot }}

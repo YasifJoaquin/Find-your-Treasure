@@ -37,7 +37,7 @@ class Notificaciones extends Component
         ]);
 
         //Alert::toast('Cartel Aceptado','info');
-        session()->flash('aceptado', 'Cartel Rechazado Satisfactoriamente');
+        session()->flash('aceptado', 'Cartel Aceptado Satisfactoriamente');
 
         auth()->user()->unreadNotifications
             ->when($id_notificacion, function($query) use ($id_notificacion){

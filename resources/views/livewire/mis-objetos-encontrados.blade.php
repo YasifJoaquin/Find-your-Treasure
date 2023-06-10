@@ -4,7 +4,8 @@
             @livewire('menu')
         </div>
 
-        <div class="w-5/6 h-4/5 m-auto rounded-xl bg-amber-900 flex flex-col justify-center">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-10">
+            <div class="w-5/6 h-4/5 m-auto rounded-xl bg-amber-900 flex flex-col justify-center">
             <div class="grid grid-cols-9 h-full text-center gap-4">
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
@@ -45,6 +46,7 @@
                     {{ $misobjetos->links() }}
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

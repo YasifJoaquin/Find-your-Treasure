@@ -4,7 +4,8 @@
             @livewire('menu')
         </div>
 
-        <div class="w-5/6 h-4/5 m-auto rounded-xl bg-center flex flex-col justify-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-10">
+            <div class="w-5/6 h-4/5 m-auto rounded-xl bg-center flex flex-col justify-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
             <div class="w-full h-1/6 text-5xl tracking-widest flex justify-center items-center font-bold max-sm:text-lg max-sm:px-5">
                 <h1> - Tripulación de este Barco - </h1>
             </div>
@@ -20,6 +21,7 @@
                     <img src="{{ asset('src/3.png') }}" alt="Capitan" class="w-5/6 h-6/6 max-sm:w-3/4 max-sm:4/5">
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </x-guest-layout>

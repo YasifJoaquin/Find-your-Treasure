@@ -47,7 +47,7 @@ class CartelPerdido extends Component
     protected $rules = [
         'objeto' => 'required|string|min:3|max:20',
         'color' => 'required|string|min:4|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
-        'descripcion' => 'required|string|min:10|max:30|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
+        'descripcion' => 'required|string|min:10|max:45|regex:/^[a-zA-Z0-9ñÑ\s,.]+$/u',
         'ubicacion' => 'required|string|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
         'image' => 'required|mimes:jpg,jpeg,png|max:10240|image',
     ];
@@ -65,7 +65,7 @@ class CartelPerdido extends Component
         'descripcion.string ' => 'El campo DESCRIPCION solo admite caracteres alfanuméricos.',
         'descripcion.min' => 'El campo DESCRIPCION debe tener al menos 10 caracteres.',
         'descripcion.max' => 'El campo DESCRIPCION no puede tener más de 30 caracteres.',
-        'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números y espacios.',
+        'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números, espacios, puntos y comas.',
         'ubicacion.required' => 'El campo UBICACION es requerido.',
         'ubicacion.string ' => 'El campo UBICACION solo admite caracteres alfanuméricos.',
         'ubicacion.regex' => 'El campo UBICACION solo puede contener letras, números y espacios.',
@@ -103,11 +103,13 @@ class CartelPerdido extends Component
                 'imagen' => $nombreImagen,
                 'estado' => 1,
                 'oculto' => 2,
+                //'aceptado' => 1,
                 'user_id' => auth()->user()->id,
             ]);
             //guardar la imagen despues de insertar para evitar los 
             $rutaImagen = $this->image->storeAs('public/imagenes', $nombreImagen);
             $rutaImagen = str_replace('public/', '', $rutaImagen);
+            //dd($rutaImagen);
 
             //guardar notificacion de objeto creado en la Base de Datos
             $this->notificacion($nuevo_objeto);

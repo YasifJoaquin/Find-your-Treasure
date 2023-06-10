@@ -4,7 +4,8 @@
             @livewire('menu')
         </div>
 
-        <div class="w-5/6 h-auto mx-auto mt-8 rounded-xl flex flex-col justify-center bg-amber-900 relative">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-6">
+            <div class="w-5/6 h-auto mx-auto mt-8 rounded-xl flex flex-col justify-center bg-amber-900 relative">
             @if (auth()->check())
                 @role(['vigia', 'almirante', 'capitan'])
                     <a href="{{ route('pregunta') }}" class="absolute top-0 right-0 m-4 bg-red-600 text-xl text-white px-4 py-2 rounded-lg border border-black hover:bg-blue-900">Crear Cartel</a>
@@ -61,6 +62,7 @@
                     </div>
                 @endif
             </div>
+        </div>
         </div>
     </div>
 </div>

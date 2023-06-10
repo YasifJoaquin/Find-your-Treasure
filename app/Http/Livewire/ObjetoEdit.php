@@ -44,7 +44,7 @@ class ObjetoEdit extends Component
         'objeto' => 'required|string|min:3|max:20',
         'marca' => 'required',
         'color' => 'required|string|min:4|regex:/^[a-zA-ZñÑ\s]+$/u',
-        'descripcion' => 'required|string|min:10|max:30|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
+        'descripcion' => 'required|string|min:10|max:45|regex:/^[a-zA-Z0-9ñÑ\s,.]+$/u',
         'ubicacion' => 'required|string|regex:/^[a-zA-ZñÑ\s]+$/u',
     ];
 
@@ -58,8 +58,8 @@ class ObjetoEdit extends Component
         'color.regex' => 'El campo COLOR solo puede contener letras y espacios.',
         'descripcion.required' => 'El campo DESCRIPCION es requerido.',
         'descripcion.min' => 'El campo DESCRIPCION debe tener al menos 10 caracteres.',
-        'descripcion.max' => 'El campo DESCRIPCION no puede tener más de 30 caracteres.',
-        'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números y espacios.',
+        'descripcion.max' => 'El campo DESCRIPCION no puede tener más de 45 caracteres.',
+        'descripcion.regex' => 'El campo DESCRIPCION solo puede contener letras, números, espacios, puntos y comas.',
         'ubicacion.required' => 'El campo UBICACION es requerido.',
         'ubicacion.regex' => 'El campo UBICACION solo puede contener letras y espacios.',
     ];

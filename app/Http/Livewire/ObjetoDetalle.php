@@ -45,6 +45,19 @@ class ObjetoDetalle extends Component
 
         return redirect()->route('operdidos');
     }
+    
+    public function devolver($id)
+    {
+        $edit = Objeto::find($id);
+        
+        $edit->update([
+            'oculto' => 1,
+        ]);
+        
+        Alert::toast('Pasa a Servicios Generales','success');
+
+        return redirect()->route('operdidos');
+    }
 
     public function render()
     {
