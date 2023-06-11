@@ -28,6 +28,13 @@
                 background-size: cover;
                 background-attachment: fixed;
             }
+
+            @media (max-width: 640px) {
+                body {
+                    /* Fondo para resolución md o inferior */
+                    background-image: url({{ asset('src/FondoCel.png') }});
+                }
+            }
         </style>
     </head>
     
