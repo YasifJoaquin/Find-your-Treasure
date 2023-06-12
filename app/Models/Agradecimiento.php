@@ -20,7 +20,7 @@ class Agradecimiento extends Model
 
     public function objeto(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Objeto::class);
     }
 
     // ----- ACCESORS -----

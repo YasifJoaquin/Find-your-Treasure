@@ -13,39 +13,65 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Filament\Forms\Components\TextInput;
+//use Filament\Forms\Components\DateTimePicker;
+//use Filament\Forms\Components\TextArea;
+
+use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Card;
+
+use Spatie\Permission\Models\Role;
+use Filament\Forms\Components\Select;
+
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationGroup = 'Gestion de Usuarios';
 
     public static function form(Form $form): Form
     {
+
+        $roles = Role::pluck('name', 'id')->toArray();
+        $roleOptions = collect($roles)->mapWithKeys(function ($name, $id) {
+            return [$id => $name];
+        })->toArray();
+
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nombres')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('apellidos')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('two_factor_secret')
-                    ->maxLength(65535),
-                Forms\Components\Textarea::make('two_factor_recovery_codes')
-                    ->maxLength(65535),
-                Forms\Components\DateTimePicker::make('two_factor_confirmed_at'),
-                Forms\Components\TextInput::make('current_team_id'),
-                Forms\Components\TextInput::make('profile_photo_path')
-                    ->maxLength(2048),
+                Card::make()
+                    ->schema([
+                        TextInput::make('nombres')
+                            ->required()
+                            ->string()
+                            ->maxLength(255),
+                        TextInput::make('apellidos')
+                            ->required()
+                            ->string()
+                            ->maxLength(255),
+                        TextInput::make('email')
+                            ->email()
+                            ->string()
+                            ->required()
+                            ->unique()
+                            ->maxLength(255),
+                        TextInput::make('password')
+                            ->password()
+                            ->required()
+                            ->same('Confirmar Contraseña')
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
+                        TextInput::make('Confirmar Contraseña')
+                            ->password()
+                            ->required(),
+                        Select::make('role')
+                            ->options($roleOptions)
+                            ->required(),
+                        FileUpload::make('profile_photo_path')
+                            ->required()
+                            ->image(),
+                    ])
             ]);
     }
 
@@ -54,9 +80,12 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombres')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('apellidos'),
-                Tables\Columns\TextColumn::make('email'),
+                    ->searchable()
+                    ->label('Nombres'),
+                Tables\Columns\TextColumn::make('apellidos')
+                    ->label('Apellidos'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Correo'),
             ])
             ->filters([
                 //
@@ -64,6 +93,7 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -73,7 +103,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ObjetosRelationManager::class,
         ];
     }
     

@@ -33,7 +33,7 @@ class CartelEncontrado extends Component
     // Validacion de los inputs
     protected $rules = [
         'objeto' => 'required|string|min:3|max:20',
-        'color' => 'required|string|min:4|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
+        'color' => 'required|string|min:4|max:20|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
         'descripcion' => 'required|string|min:10|max:45|regex:/^[a-zA-Z0-9ñÑ\s,.]+$/u',
         'ubicacion' => 'required|string|regex:/^[a-zA-Z0-9ñÑ\s]+$/u',
         'image' => 'required|mimes:jpg,jpeg,png|max:10240|image',
@@ -47,6 +47,7 @@ class CartelEncontrado extends Component
         'color.required' => 'El campo COLOR es requerido.',
         'color.string' => 'El campo COLOR solo admite caracteres alfanuméricos.',
         'color.min' => 'El campo COLOR debe tener al menos 4 caracteres.',
+        'color.max' => 'El campo COLOR debe tener al menos 20 caracteres.',
         'color.regex' => 'El campo COLOR solo puede contener letras, números y espacios.',
         'descripcion.required' => 'El campo DESCRIPCION es requerido.',
         'descripcion.string' => 'El campo DESCRIPCION solo admite caracteres alfanuméricos.',

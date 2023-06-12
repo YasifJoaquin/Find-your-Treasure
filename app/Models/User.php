@@ -16,7 +16,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 
-use App\Models\User;
+//use App\Models\User;
 
 class User extends Authenticatable implements FilamentUser, HasName
 {
