@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->longText('texto');
 
-            $table->foreignId('user_id')
+            $table->foreignId('user_id') //id del usuario que escribe un agrdecimiento
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('objeto_id')
+            $table->foreignId('objeto_id') // cada objeto tiene su propio user id, por lo que se puede, con la relacion, ver a que usuario se le esta enviando un agradecimiento
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

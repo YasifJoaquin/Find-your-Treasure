@@ -4,7 +4,13 @@
             @livewire('menu')
         </div>
 
-        <div class="w-5/6 h-4/5 m-auto rounded-xl bg-center flex flex-col justify-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-6">
+            <div class="w-5/6 h-auto mx-auto mt-8 rounded-xl flex flex-col justify-center bg-amber-900 relative">
+            @if (auth()->check())
+                @role(['vigia', 'almirante', 'capitan'])
+                    <a href="{{ route('pregunta') }}" class="absolute top-0 right-0 m-4 bg-red-600 text-xl text-white px-4 py-2 rounded-lg border border-black hover:bg-blue-900">Crear Cartel</a>
+                @endrole
+            @endif
             <div class="grid grid-cols-9 h-full text-center gap-4">
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
@@ -20,34 +26,43 @@
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
 
-                @foreach ($objetos as $objeto)
-                    <div class="col-span-3 row-span-6">
-                        <div class="w-4/6 h-5/6 mx-auto bg-center bg-cover" style="background-image: url({{ asset('src/cartel-index.png') }});">
-                            <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
-                                <div class="h-full pb-20">
-                                    <h1 class="tracking-widest text-3xl font-bold w-full pt-5">
-                                        - {{ $objeto->estado }} -
-                                    </h1>
-                                    <div class="w-3/5 h-3/6 mx-auto mt-3 mb-2 bg-gray-300">
-                                        <img src="{{ asset('storage/imagenes/' . $objeto->imagen) }}" alt="Imagen del objeto" class="w-full h-full">
-                                    </div>
-    
-                                    <h2 class="text-2xl tracking-wider font-semibold px-4">
-                                        {{ $objeto->objeto }}
-                                    </h2>
-                                    <h3 class="text-lg tracking-wider px-4">
-                                        {{ $objeto->ubicacion }}
-                                    </h3>
-                                </div> 
-                            </a>
-                        </div>
+                @if ($objetos->count() == 0)
+                    <div class="col-span-9 mx-auto mt-40 mb-48">
+                        <h1 class="text-center text-5xl text-black">
+                            Ahoy marinero, se el primero en publicar tu cartel.!
+                        </h1>
                     </div>
-                @endforeach
+                @else
+                    @foreach ($objetos as $objeto)
+                        <div class="col-span-3 row-span-6">
+                            <div class="w-4/6 h-5/6 mx-auto bg-amber-950">
+                                <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
+                                    <div class="h-full pb-20">
+                                        <h1 class="tracking-widest text-3xl font-bold w-full pt-5">
+                                            - {{ $objeto->estado }} -
+                                        </h1>
+                                        <div class="w-4/5 h-40 mx-auto mt-3 mb-2 bg-gray-300">
+                                            <img src="{{ asset('storage/imagenes/' . $objeto->imagen) }}" alt="Imagen del objeto" class="w-full h-full">
+                                        </div>
 
-                <div class="col-span-9 mx-auto">
-                    {{ $objetos->links() }}
-                </div>
+                                        <h2 class="text-2xl tracking-wider font-semibold px-4">
+                                            {{ $objeto->objeto }}
+                                        </h2>
+                                        <h3 class="text-lg tracking-wider px-4">
+                                            {{ $objeto->ubicacion }}
+                                        </h3>
+                                    </div> 
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <div class="col-span-9 mx-auto mb-5">
+                        {{ $objetos->links() }}
+                    </div>
+                @endif
             </div>
+        </div>
         </div>
     </div>
 </div>

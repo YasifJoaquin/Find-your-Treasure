@@ -4,13 +4,14 @@
             @livewire('menu')
         </div>
 
-        <div class="w-5/6 h-4/5 m-auto rounded-xl bg-center flex flex-col justify-center" style="background-image: url({{ asset('src/fondo-claro.png') }});">
+        <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center mt-10">
+            <div class="w-5/6 h-4/5 m-auto rounded-xl bg-amber-900 flex flex-col justify-center">
             <div class="grid grid-cols-9 h-full text-center gap-4">
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
                 <div class=" invisible"></div>
                 <div class="col-span-3">
-                    <div class="border-2 border-black flex justify-between mt-3 items-center bg-red-600 rounded-xl">
+                    <div class="border-2 border-black flex justify-between mt-3 items-center bg-blue-900 rounded-xl">
                         <img src="{{ asset('src/clavo.png') }}" class="ml-2 w-10 h-10">
                         <h1 class="text-gray-200 text-2xl tracking-widest"> Mis Objetos Encontrados </h1>
                         <img src="{{ asset('src/clavo.png') }}" class="mr-2 w-10 h-10">
@@ -22,17 +23,17 @@
 
                 @foreach ($misobjetos as $objeto)
                     <div class="col-span-3 row-span-6">
-                        <div class="w-4/6 h-5/6 mx-auto bg-center bg-cover" style="background-image: url({{ asset('src/cartel-index.png') }});">
+                        <div class="w-4/6 h-4/5 mx-auto bg-amber-950">
                             <a href="{{ route('objeto.show', ['id' => $objeto->id]) }}">
                                 <div class="h-full py-8">
-                                    <div class="border-2 border-black w-3/5 h-3/5 mx-auto mt-3 mb-4 bg-gray-400 rounded-xl">
+                                    <div class="border-2 border-black w-4/5 h-40 mx-auto mt-3 mb-4 bg-gray-400 rounded-xl">
                                         <img src="{{ asset('storage/imagenes/' . $objeto->imagen) }}" alt="Imagen del objeto" class="h-full w-full rounded-xl">
                                     </div>
-    
+
                                     <h2 class="text-2xl tracking-wider font-semibold px-4">
                                         {{ $objeto->objeto }}
                                     </h2>
-                                    <h3 class="text-lg tracking-wider px-4">
+                                    <h3 class="text-lg tracking-wider px-4 bg-">
                                         {{ $objeto->ubicacion }}
                                     </h3>
                                 </div> 
@@ -45,6 +46,7 @@
                     {{ $misobjetos->links() }}
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

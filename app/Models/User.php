@@ -16,7 +16,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 
-use App\Models\User;
+//use App\Models\User;
 
 class User extends Authenticatable implements FilamentUser, HasName
 {
@@ -37,6 +37,7 @@ class User extends Authenticatable implements FilamentUser, HasName
         'apellidos',
         'email',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -81,7 +82,7 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@itsmotul.edu.mx') && $this->hasRole('marinero');
+        return str_ends_with($this->email, '@example.com') && $this->hasRole(['capitan','almirante','vigia']);
         
     }
 

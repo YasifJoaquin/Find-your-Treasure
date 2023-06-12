@@ -15,6 +15,7 @@ class MisAgradecimientos extends Component
             ->join('objetos', 'agradecimientos.objeto_id', '=', 'objetos.id')
             ->join('users', 'objetos.user_id', '=', 'users.id')
             ->select('agradecimientos.*', 'users.nombres', 'objetos.objeto')
+            ->latest()
             ->paginate(3);
 
         //dd($agradecimientos);

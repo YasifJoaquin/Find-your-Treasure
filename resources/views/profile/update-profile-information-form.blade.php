@@ -9,48 +9,32 @@
 
     <x-slot name="form">
         <!-- Profile Photo -->
-        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
-                <!-- Profile Photo File Input -->
-                <input type="file" class="hidden"
-                            wire:model="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            " />
-
-                <x-label for="photo" value="{{ __('Photo') }}" />
-
-                <!-- Current Profile Photo -->
-                <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->nombres }}" class="rounded-full h-20 w-20 object-cover">
+        <div class="flex justify-center items-center w-4/6 h-40 mx-auto mb-5">
+            @if (isset($photo))
+                <div class="flex items-center justify-center">
+                    <div class="w-40 h-40 mr-2">
+                        <img src="{{ $photo->temporaryURL() }}" alt="" class="h-full w-full">
+                    </div>
+                    <div class="w-1/2">
+                        <label class="w-auto h-auto cursor-pointer opacity-90 hover:opacity-100">
+                            <div class="w-40 h-40 mr-2 flex items-center justify-center">
+                                <input type="file" id="photo" wire:model="photo" class="hidden">
+                                <img src="{{ asset('storage/profile-photos/' . auth()->user()->profile_photo_path) }}" alt="" class="h-full w-full">
+                            </div>
+                        </label>
+                    </div>
                 </div>
-
-                <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview" style="display: none;">
-                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                        x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
-                    </span>
+            @else
+                <div class="w-1/2">
+                    <label class="w-full h-auto cursor-pointer opacity-90 hover:opacity-100">
+                        <div class="w-40 h-40 flex items-center justify-center">
+                            <input type="file" id="photo" wire:model="photo" class="hidden">
+                            <img src="{{ asset('storage/profile-photos/' . auth()->user()->profile_photo_path) }}" alt="" class="h-full w-full">
+                        </div>
+                    </label>
                 </div>
-
-                <x-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
-                </x-secondary-button>
-
-                @if ($this->user->profile_photo_path)
-                    <x-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
-                    </x-secondary-button>
-                @endif
-
-                <x-input-error for="photo" class="mt-2" />
-            </div>
-        @endif
+            @endif
+        </div>
 
         <!-- Name -->
         <div class="mb-3">

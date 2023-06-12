@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title> Find your Treasure</title>
+
+        <link href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+        <script src="{{ asset('vendor/sweetalert2/sweetalert2.min.js') }}"></script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,13 +20,18 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <style>
+            body {
+                background-image: url({{ asset('src/Fondo.png') }});
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+        </style>
     </head>
-    <body class="inset-0 bg-no-repeat bg-center bg-cover" style="background-image: url({{ asset('src/gradient.png') }}) ;">
-
-        <!-- Segundo fondo -->
-        <div class="absolute inset-0 z-0 h-auto">
-            <img src="{{ asset('src/fondo.png')}}" alt="Barco" class="w-full h-full object-cover" alt="">
-        </div>
+    
+    <body>
 
         <div class="font-sans text-gray-900 antialiased absolute z-50 w-screen">
             {{ $slot }}

@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             ObjetoSeeder::class,
             ClasificacionSeeder::class,
             ClasificacionObjetoSeeder::class,
-            AgradecimientoSeeder::class
+            AgradecimientoSeeder::class,
+            PermissionSeeder::class
         ]);
     }
 }

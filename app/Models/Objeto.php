@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Objeto extends Model
 {
@@ -20,13 +21,15 @@ class Objeto extends Model
         'descripcion',
         'valor_sentimental',
         'estado',
+        'aceptado',
+        'oculto',
         'imagen',
         'user_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function clasificacion(): BelongsToMany
@@ -51,7 +54,7 @@ class Objeto extends Model
             case 3:
                 return 'Devuelto';
             case 4:
-                return 'no_reclamado';
+                return 'No Reclamado';
             default:
                 return 'desconocido';
         }

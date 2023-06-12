@@ -1,17 +1,13 @@
 <x-app-layout>
     
-    <div class="relative">
+    <div class="relative z-50">
         @livewire('menu')
     </div>
 
-    <div>
+    <div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center border-2 border-black">
         <div class="mt-6 flex justify-center text-center relative">
-            {{-- Fondo carte --}}
-            <div class="absolute inset-0 z-0">
-                <img src="{{ asset('src/cartel-index.png')}}" alt="Barco" class="w-11/12 h-full object-cover mx-auto" alt=" fondo perfil">
-            </div>
             {{-- Grids del perfil --}}
-            <div class="w-4/5 h-4/5 grid grid-cols-5 gap-2 z-10">
+            <div class="w-full h-4/5 grid grid-cols-5 gap-2 z-10 bg-amber-950 px-5">
                 {{-- Div principal, titulo --}}
                 <div class="col-span-5 rounded-xl w-6/12 h-14 mx-auto bg-red-600 flex justify-center items-center mt-3 border-2 border-black">
                     <div class="w-3/12"> 
@@ -27,12 +23,10 @@
                 <div class="col-span-2 row-span-6 bg-red-600 rounded-2xl border-2 border-black">
                     <p class="text-xl text-white tracking-widest">
                         - Se busca -
-                    </p> <br>
-                    <div class="border w-48 h-40 mx-auto"></div>
+                    </p>
                     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                         @livewire('profile.update-profile-information-form')
                     @endif
-                    
                 </div>
                 {{-- Div de los Objetos Perdidos --}}
                 <div class="col-span-2 row-span-3 bg-red-600 rounded-2xl hover:bg-red-700">
@@ -63,7 +57,7 @@
                     <a href="{{ route('magradecimientos') }}" class="top-0 left-0 border-2 rounded-xl w-full h-full flex flex-col items-center border-black">
                         <img src="{{ asset('src/mapa.png')}}" alt="Icono" class="w-20 h-20 mt-10">
                         <div class="absolute z-10 mt-32">
-                            <span class="text-white text-2xl tracking-wider"> Mis Agradecimientos </span>
+                            <span class="text-white text-2xl tracking-wider"> Mis <br> Agradecimientos </span>
                         </div>
                     </a>
                 </div>
