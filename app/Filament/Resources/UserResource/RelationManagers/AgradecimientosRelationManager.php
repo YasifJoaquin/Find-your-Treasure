@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AgradecimientosRelationManager extends RelationManager
 {
-    protected static string $relationship = 'agradecimientos';
+    protected static string $relationship = 'agradecimiento';
 
     protected static ?string $recordTitleAttribute = 'user_id';
 
@@ -21,29 +21,33 @@ class AgradecimientosRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('user_id')
+                    ->required(),
+                Forms\Components\TextInput::make('objeto_id')
+                    ->required(),
+                Forms\Components\TextArea::make('texto')
                     ->required()
-                    ->maxLength(255),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('user_id'),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+        ->columns([
+            Tables\Columns\TextColumn::make('user.nombres')->label('Remitente'),
+            Tables\Columns\TextColumn::make('objeto.user.nombres')->label('Destinatario'),
+        ])
+        ->filters([
+            //
+        ])
+        ->headerActions([
+            Tables\Actions\CreateAction::make(),
+        ])
+        ->actions([
+            Tables\Actions\ViewAction::make(),
+            Tables\Actions\DeleteAction::make(),
+        ])
+        ->bulkActions([
+            Tables\Actions\DeleteBulkAction::make(),
+        ]);
     }    
 }

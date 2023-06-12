@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-span-4 flex flex-col items-center">
                             <label for="pregunta4" class="block text-lg text-gray-700 mb-1 tracking-wider">Explicais más sobre este tesoro, bucanero</label>
-                            <input type="text" id="pregunta4" name="descripcion" wire:model="descripcion" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
+                            <input type="text" id="pregunta4" name="descripcion" maxlength="45" wire:model="descripcion" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
                             @error('descripcion') <span class="mt-1 error text-black font-semibold bg-orange-300 rounded-xl py-1 px-2">{{ $message }}</span> @enderror
                         </div>
     
