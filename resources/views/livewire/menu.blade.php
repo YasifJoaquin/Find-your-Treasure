@@ -11,10 +11,10 @@
                     </div>
                 </a>
                 
-                <a href="{{ route('filament.resources.users.index') }}">
+                <a href="{{ route('filament.pages.dashboard') }}">
                     <div class="hidden sm:block bg-red-600 rounded-full text-center my-auto h-full br-red-600 hover:bg-blue-900 text-white p-2">
                         <p class="tracking-widest mt-1 text-xl">
-                            Usuarios
+                            Management
                         </p>
                     </div>
                 </a>
@@ -202,7 +202,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--Menu para celulares-->
     <header class="h-14 bg-red-600 sm:hidden w-full">
         <div x-data="{ isActive: false }" class="relative flex justify-center sm:hidden">
@@ -224,7 +224,19 @@
                     <a href="{{ url('/') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> Inicio </a>
                     
                     @if(auth()->check())
-                        <a href="{{ route('profile.show') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> {{ Auth::user()->nombres }} </a>
+                        @if (auth()->user()->hasRole('almirante'))
+                            <a href="{{ route('profile.show') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black">
+                                <p class="tracking-widest">
+                                    {{ Auth::user()->nombres }}
+                                </p>
+                            </a>
+                        @else
+                            <a href="{{ route('filament.pages.dashboard') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black">
+                                <p class="tracking-widest">
+                                    Management
+                                </p>
+                            </a>
+                        @endif
                     @else
                         <a href="{{ route('login') }}" class="block rounded-lg px-4 py-2 text-xl trackin-wide-st text-black"> Perfil </a>
                     @endif
@@ -233,12 +245,15 @@
                     <a href="{{ route('operdidos') }}" class="block rounded-lg px-4 py-2 text-xl trackin-widest text-black"> Objetos Perdidos </a>
 
                     @if(auth()->check())
-                        <button wire:click="cerrar_sesion" class="flex w-full items-center rounded-lg px-4 py-2 text-xl trackin-widest text-red-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-                            </svg>
-                            Cerrar Sesion
-                        </button>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="flex w-full items-center rounded-lg px-4 py-2 text-xl trackin-widest text-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                                </svg>
+                                Cerrar Sesion
+                            </button>
+                        </form>
                     @endif
                 </div>
             </div>

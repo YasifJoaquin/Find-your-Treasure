@@ -30,6 +30,8 @@ class CartelPerdido extends Component
     public $ubicacion;
     public $descripcion;
     public $image;
+    public $extensionesPermitidas = ['jpg', 'jpeg', 'png'];
+    public $mensaje = False;
 
     // Variable donde se almacenara el valor de la importancia
     public $importanceLevel = 0;
@@ -71,7 +73,7 @@ class CartelPerdido extends Component
         'ubicacion.string ' => 'El campo UBICACION solo admite caracteres alfanuméricos.',
         'ubicacion.regex' => 'El campo UBICACION solo puede contener letras, números y espacios.',
         'image.required' => 'Se necesita una imagen del objeto',
-        'image.mime' => 'Los formatos de imagenes validos son jpg, jpeg y png',
+        'image.mimes' => 'Los formatos de imagenes validos son jpg, jpeg y png',
         'image.max' => 'El tamaño maximo de la imagen debe de ser de 10mb',
     ];
 
@@ -88,6 +90,12 @@ class CartelPerdido extends Component
 
         //Renombrar la imagen 
         $nombreImagen = str_replace(' ', '_', $this->objeto) . '_' . "perdido" . '.' . $this->image->extension();
+
+        if(in_array($this->image->extension(), $this->extensionesPermitidas)){
+            $this->mensaje = False;
+        } else {
+            $this->mensaje = True;
+        }
 
         // Validar si el usuario esta logueado
         if (Auth::check()) {

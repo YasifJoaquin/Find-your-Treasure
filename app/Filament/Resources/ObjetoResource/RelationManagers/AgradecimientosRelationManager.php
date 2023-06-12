@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AgradecimientosRelationManager extends RelationManager
 {
-    protected static string $relationship = 'agradecimientos';
+    protected static string $relationship = 'agradecimiento';
 
     protected static ?string $recordTitleAttribute = 'objeto_id';
 
@@ -20,9 +20,12 @@ class AgradecimientosRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('user_id')
+                    ->required(),
                 Forms\Components\TextInput::make('objeto_id')
+                    ->required(),
+                Forms\Components\TextArea::make('texto')
                     ->required()
-                    ->maxLength(255),
             ]);
     }
 
@@ -30,7 +33,8 @@ class AgradecimientosRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('objeto_id'),
+                Tables\Columns\TextColumn::make('user.nombres')->label('Remitente'),
+                Tables\Columns\TextColumn::make('objeto.user.nombres')->label('Destinatario'),
             ])
             ->filters([
                 //
@@ -39,7 +43,7 @@ class AgradecimientosRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

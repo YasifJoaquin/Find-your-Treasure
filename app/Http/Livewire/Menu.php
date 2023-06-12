@@ -16,13 +16,6 @@ class Menu extends Component
             $this->cantidad_noti = Auth::user()->unreadNotifications->count();
         }
     }
-    
-    public function cerrar_sesion()
-    {
-        Auth::logout();
-
-        return redirect()->to('/');
-    }
 
     public function render()
     {

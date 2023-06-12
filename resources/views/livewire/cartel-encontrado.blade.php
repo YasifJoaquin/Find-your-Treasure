@@ -25,6 +25,7 @@
                     <div class=" invisible"></div>
                     <div class="col-span-4 flex flex-col items-center my-2">
                         @if (isset($image))
+                            @if (in_array($image->guessExtension(), $extensionesPermitidas))
                                 <div class="w-1/2 flex justify-center">
                                     <label class="w-auto h-auto cursor-pointer opacity-90 hover:opacity-100">
                                         <div class="w-32 h-32 mr-2 flex items-center justify-center ml-1">
@@ -33,6 +34,14 @@
                                         </div>
                                     </label>
                                 </div>
+                            @else
+                                <label class="w-20 h-20 bg-red-500 flex justify-center items-center cursor-pointer border-4 border-gray-400 rounded-3xl">
+                                    <div class=" opacity-50 hover:opacity-100 h-full w-full flex items-center justify-center">
+                                        <input type="file" id="image" wire:model="image" class="hidden">
+                                        <img src="{{ asset('src/camara-1.png') }}" alt="Icono" class="w-4/6 h-4/6">
+                                    </div>
+                                </label>
+                            @endif
                         @else
                             <label class="w-20 h-20 bg-yellow-500 flex justify-center items-center cursor-pointer border-4 border-gray-400 rounded-3xl">
                                 <div class=" opacity-50 hover:opacity-100 h-full w-full flex items-center justify-center">
@@ -51,7 +60,12 @@
                         @error('image')
                         <span class="text-black font-semibold bg-orange-300 rounded-xl py-1 px-2"> {{ $message }} </span>
                         @else
-                        Retrato del tesoro
+                            @if (isset($image))
+                                @if (!in_array($image->guessExtension(), $extensionesPermitidas))
+                                    <span class="text-black font-semibold bg-orange-300 rounded-xl py-1 px-2"> Tipo de archivo invalido, solo se aceptan imagenes </span>
+                                @endif
+                            @endif
+                            Retrato del tesoro
                         @enderror
                     </div>
                     <div class=" invisible"></div>
@@ -76,7 +90,7 @@
                     </div>
                     <div class="col-span-4 flex flex-col items-center">
                         <label for="pregunta4" class="block text-lg text-gray-700 mb-1 tracking-wider">Explicais más sobre este tesoro, bucanero</label>
-                        <input type="text" id="pregunta4" name="descripcion" wire:model="descripcion" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
+                        <input type="text" id="pregunta4" name="descripcion" maxlength="45" wire:model="descripcion" class="border-2 focus:bg-gray-200 border-amber-900 bg-gray-300 hover:bg-gray-200 rounded-full w-4/6 text-base">
                         @error('descripcion') <span class="mt-1 error text-black font-semibold bg-orange-300 rounded-xl py-1 px-2">{{ $message }}</span> @enderror
                     </div>
                 

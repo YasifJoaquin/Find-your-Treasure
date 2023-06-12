@@ -15,7 +15,7 @@ class AgradecimientoSeeder extends Seeder
     public function run(): void
     {
         Agradecimiento::factory()
-            ->count(5)
+            ->count(15)
             ->create()
             ;
     }

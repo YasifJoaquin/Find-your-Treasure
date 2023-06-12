@@ -104,6 +104,7 @@ class UserResource extends Resource
     {
         return [
             RelationManagers\ObjetosRelationManager::class,
+            RelationManagers\AgradecimientosRelationManager::class,
         ];
     }
     

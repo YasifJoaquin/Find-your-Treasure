@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ObjetoResource\Pages;
 use App\Filament\Resources\ObjetoResource\RelationManagers;
+use App\Filament\Resources\ObjetoResource\RelationManagers\AgradecimientosRelationManager;
 use App\Models\Objeto;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -132,7 +133,7 @@ class ObjetoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\AgradecimientosRelationManager::class,
         ];
     }
     

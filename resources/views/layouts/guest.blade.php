@@ -7,6 +7,8 @@
 
         <title> Find your Treasure</title>
 
+        <link rel="shortcut icon" sizes="300x300" href="{{ asset('/src/ms-icon-310x310.png') }}">
+
         <link href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
         <script src="{{ asset('vendor/sweetalert2/sweetalert2.min.js') }}"></script>
 
