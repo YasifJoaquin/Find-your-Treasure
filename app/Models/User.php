@@ -82,8 +82,8 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@example.com') && $this->hasRole(['capitan','almirante','vigia']);
-        
+        //return str_ends_with($this->email, '@itsmotul.edu.mx') && $this->hasRole(['capitan','almirante','vigia']);
+        return $this->hasRole(['capitan','almirante','vigia']);
     }
 
     public function getFilamentName(): string

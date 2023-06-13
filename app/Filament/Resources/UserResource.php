@@ -34,11 +34,6 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
 
-        $roles = Role::pluck('name', 'id')->toArray();
-        $roleOptions = collect($roles)->mapWithKeys(function ($name, $id) {
-            return [$id => $name];
-        })->toArray();
-
         return $form
             ->schema([
                 Card::make()
@@ -55,7 +50,6 @@ class UserResource extends Resource
                             ->email()
                             ->string()
                             ->required()
-                            ->unique()
                             ->maxLength(255),
                         TextInput::make('password')
                             ->password()
@@ -65,12 +59,10 @@ class UserResource extends Resource
                         TextInput::make('Confirmar Contraseña')
                             ->password()
                             ->required(),
-                        Select::make('role')
-                            ->options($roleOptions)
-                            ->required(),
-                        FileUpload::make('profile_photo_path')
-                            ->required()
-                            ->image(),
+                        Select::make('Rol')
+                            ->multiple()
+                            ->relationship('roles','name')->preload(),
+                        FileUpload::make('profile_photo_path'),
                     ])
             ]);
     }
@@ -80,6 +72,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombres')
+                    ->sortable()
                     ->searchable()
                     ->label('Nombres'),
                 Tables\Columns\TextColumn::make('apellidos')

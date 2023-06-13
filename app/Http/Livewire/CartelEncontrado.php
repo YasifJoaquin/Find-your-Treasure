@@ -96,7 +96,7 @@ class CartelEncontrado extends Component
                 'imagen' => $nombreImagen,
                 'estado' => 2,
                 'oculto' => 2,
-                'aceptado' => 1,
+                //'aceptado' => 1,
                 'user_id' => auth()->user()->id,
             ]);
 

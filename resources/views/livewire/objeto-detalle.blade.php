@@ -57,28 +57,31 @@
                                             </a>
                                         </div>
 
-                                        @if ($estado == "Perdido")
-                                        <div class="w-1/6 ml-14 flex items-center justify-center">
-                                            <button @click="openDevolver" class="w-auto mx-auto text-black tracking-wider py-2 px-4 rounded">
-                                                <img src="{{asset('src/devolver.png')}}" alt="Boton de ocultar" class="w-14 h-14">
-                                                <h1 class="mt-1 text-xl"> Devolver </h1>
-                                            </button>
-                                        </div>
-                                        @elseif ($estado == "Encontrado")
-                                        <div class="w-1/6 ml-14 flex items-center justify-center">
-                                            <button @click="openDevolver" class="w-auto mx-auto text-black tracking-wider py-2 px-4 rounded">
-                                                <img src="{{asset('src/devolver.png')}}" alt="Boton de ocultar" class="w-14 h-14">
-                                                <h1 class="mt-1 text-xl"> Recuperar </h1>
-                                            </button>
-                                        </div>
-                                        @endif
-
                                         <div class="w-1/6 ml-14">
                                             <button @click="openModal" class="w-auto mx-auto">
                                                 <img src="{{asset('src/muerte.png')}}" alt="Boton de ocultar" class="w-14 h-14">
                                                 <h1 class="mt-1 text-xl"> Eliminar </h1>
                                             </button>
                                         </div>
+                                    </div>
+                                @endif
+                                @if($detalles->user_id != Auth::user()->id)
+                                    <div class="mx-auto flex justify-center">
+                                        @if ($estado == "Perdido")
+                                            <div class="w-1/6 flex items-center justify-center">
+                                                <button @click="openDevolver" class="w-auto mx-auto text-black tracking-wider py-2 px-4 rounded">
+                                                    <img src="{{asset('src/devolver.png')}}" alt="Boton de ocultar" class="w-14 h-14">
+                                                    <h1 class="mt-1 text-xl"> Devolver </h1>
+                                                </button>
+                                            </div>
+                                        @elseif ($estado == "Encontrado")
+                                            <div class="w-1/6 flex items-center justify-center">
+                                                <button @click="openDevolver" class="w-auto mx-auto text-black tracking-wider py-2 px-4 rounded">
+                                                    <img src="{{asset('src/devolver.png')}}" alt="Boton de ocultar" class="w-14 h-14">
+                                                    <h1 class="mt-1 text-xl"> Recuperar </h1>
+                                                </button>
+                                            </div>
+                                        @endif
                                     </div>
                                 @endif
                             @endif

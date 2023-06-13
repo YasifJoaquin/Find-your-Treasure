@@ -18,7 +18,10 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Filters\SelectFilter;
+
+use Illuminate\Support\Facades\Auth;
 
 class ObjetoResource extends Resource
 {
@@ -29,35 +32,43 @@ class ObjetoResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $user_id = Auth::id();
+
         return $form
             ->schema([
                 Card::make()
                 ->schema([
                     TextInput::make('objeto')
+                        ->label('Objeto')
                         ->string()
                         ->required()
-                        ->minValue(3)
-                        ->maxValue(20),
+                        ->minLength(3)
+                        ->maxLength(20),
                     TextInput::make('marca')
+                        ->label('Marca')
                         ->string()
                         ->required(),
                     TextInput::make('color')
+                    ->label('Color')
                         ->string()
                         ->required()
-                        ->minValue(4)
-                        ->maxValue(20)
+                        ->minLength(4)
+                        ->maxLength(20)
                         ->telRegex('/^[a-zA-Z0-9ñÑ\s]+$/u'),
                     TextInput::make('ubicacion')
+                    ->label('Ubicacion')
                         ->string()
                         ->required()
                         ->telRegex('/^[a-zA-Z0-9ñÑ\s]+$/u'),
-                    TextInput::make('descripcion')
+                    Textarea::make('descripcion')
+                    ->label('Descripcion')
                         ->string()
                         ->required()
-                        ->minValue(4)
-                        ->maxValue(20)
-                        ->telRegex('/^[a-zA-Z0-9ñÑ\s,.]+$/u'),
+                        ->minLength(4)
+                        ->maxLength(20)
+                        ->rules('/^[a-zA-Z0-9ñÑ\s,.]+$/u'),
                     Select::make('estado')
+                        ->label('Estado del objeto')
                         ->options([
                             1 => 'Perdido',
                             2 => 'Encontrado',
@@ -65,11 +76,13 @@ class ObjetoResource extends Resource
                             4 => 'Sin Reclamar',
                         ])->required(),
                     Select::make('aceptado')
+                        ->label('¿Valido?')
                         ->options([
                             1 => 'Aceptado',
                             2 => 'Rechazado',
                         ])->required(),
-                    Select::make('aceptado')
+                    Select::make('oculto')
+                    ->label('¿Oculto por el usuario?')
                         ->options([
                             1 => 'Si',
                             2 => 'No',
@@ -79,6 +92,8 @@ class ObjetoResource extends Resource
                         ->image(),
                     TextInput::make('user_id')
                         ->numeric()
+                        ->default($user_id)
+                        ->disabled(),
                 ])
             ]);
     }
